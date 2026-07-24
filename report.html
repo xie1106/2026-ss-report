@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026春夏商品多维度标签分析报告</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC","WenQuanYi Micro Hei",sans-serif; background:#f5f7fa; color:#1a1a2e; line-height:1.6; }
+.container { max-width:1400px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:white; padding:40px; border-radius:16px; margin-bottom:30px; text-align:center; }
+.header h1 { font-size:32px; margin-bottom:10px; }
+.header p { font-size:16px; opacity:0.9; }
+.section { background:white; border-radius:12px; padding:30px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); }
+.section h2 { font-size:22px; color:#2d3748; margin-bottom:20px; padding-bottom:12px; border-bottom:3px solid #667eea; display:inline-block; }
+.section h3 { font-size:18px; color:#4a5568; margin:24px 0 16px 0; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
+.kpi-card { background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%); border-radius:10px; padding:20px; text-align:center; border-left:4px solid #667eea; border-top:3px solid #667eea; }
+.kpi-card .label { font-size:13px; color:#718096; margin-bottom:6px; }
+.kpi-card .value { font-size:22px; font-weight:700; color:#2d3748; }
+.kpi-card .change { font-size:12px; margin-top:4px; }
+.kpi-card .up { color:#e53e3e; }
+.kpi-card .down { color:#38a169; }
+.kpi-card .warn { color:#dd6b20; }
+.kpi-card .neutral { color:#718096; }
+.chart-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(500px,1fr)); gap:20px; margin-bottom:20px; }
+.chart-box { background:#fafafa; border-radius:8px; padding:16px; }
+.chart { width:100%; height:350px; }
+.table-wrap { overflow-x:auto; margin-top:16px; border-radius:4px; border:1px solid #d9dee7; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:#5B7FF7; color:white; padding:10px 12px; font-weight:600; font-size:13px; border:1px solid #4A6FE0; white-space:nowrap; }
+th.txt-l { text-align:left; }
+th.txt-r { text-align:right; }
+td { padding:8px 12px; border:1px solid #e8ecf0; background:white; white-space:nowrap; }
+td:not(.num) { text-align:left; }
+td.num { text-align:right; font-variant-numeric:tabular-nums; }
+tr:nth-child(even) td { background:#f8faff; }
+tr:hover td { background:#e8f0ff; }
+.tag { display:inline-block; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:600; }
+.tag-good { background:#c6f6d5; color:#22543d; }
+.tag-warn { background:#feebc8; color:#744210; }
+.tag-bad { background:#fed7d7; color:#742a2a; }
+.insight-box { background:#fffaf0; border-left:4px solid #ed8936; padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0; }
+.insight-box h4 { color:#c05621; margin-bottom:8px; }
+.insight-box ul { margin-left:20px; }
+.insight-box li { margin:6px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>2026春夏商品分析报告</h1>
+    <p>分析周期：2025年春夏 vs 2026年春夏（1-6月发货数据）</p>
+</div>
+
+<div class="section">
+    <h2>核心指标概览</h2>
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="label">2026销售总金额</div>
+            <div class="value">¥18,612,774</div>
+            <div class="change down">YoY +28.6%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">2026净销售额</div>
+            <div class="value">¥15,031,484</div>
+            <div class="change down">YoY +24.2%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">2026销售数量</div>
+            <div class="value">382,069</div>
+            <div class="change down">YoY +43.3%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">整体退货率</div>
+            <div class="value">17.9%</div>
+            <div class="change warn">2025: 15.0% ↑</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">客单价</div>
+            <div class="value">¥48.7</div>
+            <div class="change warn">2025: ¥54.3 ↓</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">SKU数</div>
+            <div class="value">1214</div>
+            <div class="change neutral">2025: 369</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">国内销售金额</div>
+            <div class="value">¥17,816,082</div>
+            <div class="change neutral">占比 95.7%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">国外销售金额</div>
+            <div class="value">¥796,693</div>
+            <div class="change neutral">占比 4.3%</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Part 1 — 2026春夏商品分析</h2>
+
+    <h3>1.1 品类结构与贡献度</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_cat_pie" class="chart"></div></div>
+        <div class="chart-box"><div id="chart_cat_bar" class="chart"></div></div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">品类</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">SKU数</th><th class="txt-r">退货率</th><th class="txt-r">净毛利率</th></tr>
+<tr><td>短袖T</td><td class="num">¥10,005,526</td><td class="num">53.8%</td><td class="num">247,799</td><td class="num">529</td><td class="num">16.8%</td><td class="num">82.4%</td></tr><tr><td>长裤</td><td class="num">¥3,405,793</td><td class="num">18.3%</td><td class="num">45,332</td><td class="num">346</td><td class="num">17.8%</td><td class="num">80.8%</td></tr><tr><td>短裤</td><td class="num">¥2,096,501</td><td class="num">11.3%</td><td class="num">35,905</td><td class="num">125</td><td class="num">14.7%</td><td class="num">84.5%</td></tr><tr><td>外套</td><td class="num">¥1,352,034</td><td class="num">7.3%</td><td class="num">15,351</td><td class="num">40</td><td class="num">30.9%</td><td class="num">68.5%</td></tr><tr><td>长袖T</td><td class="num">¥1,263,639</td><td class="num">6.8%</td><td class="num">26,252</td><td class="num">45</td><td class="num">25.3%</td><td class="num">74.7%</td></tr><tr><td>背心</td><td class="num">¥346,585</td><td class="num">1.9%</td><td class="num">9,216</td><td class="num">28</td><td class="num">19.5%</td><td class="num">80.2%</td></tr><tr><td>七分裤</td><td class="num">¥55,241</td><td class="num">0.3%</td><td class="num">915</td><td class="num">39</td><td class="num">6.1%</td><td class="num">93.7%</td></tr><tr><td>帽子</td><td class="num">¥29,845</td><td class="num">0.2%</td><td class="num">317</td><td class="num">5</td><td class="num">25.6%</td><td class="num">68.8%</td></tr><tr><td>裙子</td><td class="num">¥23,941</td><td class="num">0.1%</td><td class="num">273</td><td class="num">3</td><td class="num">28.2%</td><td class="num">71.4%</td></tr><tr><td>短袖衬衫</td><td class="num">¥17,764</td><td class="num">0.1%</td><td class="num">420</td><td class="num">20</td><td class="num">6.4%</td><td class="num">93.6%</td></tr><tr><td>套装</td><td class="num">¥7,167</td><td class="num">0.0%</td><td class="num">102</td><td class="num">2</td><td class="num">11.8%</td><td class="num">89.4%</td></tr><tr><td>背包</td><td class="num">¥3,983</td><td class="num">0.0%</td><td class="num">115</td><td class="num">18</td><td class="num">20.0%</td><td class="num">82.9%</td></tr><tr><td>马甲</td><td class="num">¥3,501</td><td class="num">0.0%</td><td class="num">15</td><td class="num">2</td><td class="num">46.7%</td><td class="num">67.5%</td></tr><tr><td>饰品</td><td class="num">¥671</td><td class="num">0.0%</td><td class="num">41</td><td class="num">5</td><td class="num">56.1%</td><td class="num">66.1%</td></tr><tr><td>卫衣</td><td class="num">¥321</td><td class="num">0.0%</td><td class="num">10</td><td class="num">4</td><td class="num">20.0%</td><td class="num">89.6%</td></tr><tr><td>长袖衬衫</td><td class="num">¥235</td><td class="num">0.0%</td><td class="num">5</td><td class="num">2</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>袜子</td><td class="num">¥27</td><td class="num">0.0%</td><td class="num">1</td><td class="num">1</td><td class="num">0.0%</td><td class="num">100.0%</td></tr>
+        </table>
+    </div>
+
+    <h3>1.2 价格带表现</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_price" class="chart"></div></div>
+        <div class="chart-box"><div id="chart_price_margin" class="chart"></div></div>
+    </div>
+
+    <h3>1.3 颜色维度拆解</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_color" class="chart"></div></div>
+        <div class="chart-box"><div id="chart_color_return" class="chart"></div></div>
+    </div>
+
+    <h3>1.4 面料维度拆解</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_fabric" class="chart"></div></div>
+        <div class="chart-box"><div id="chart_fabric_margin" class="chart"></div></div>
+    </div>
+
+    <h3>1.5 国内省份销售分布</h3>
+    <div class="chart-box"><div id="chart_cn_province" class="chart" style="height:450px;"></div></div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">省份</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th><th class="txt-r">净毛利率</th></tr>
+<tr><td>广东</td><td class="num">¥6,642,868</td><td class="num">37.3%</td><td class="num">136,674</td><td class="num">13.6%</td><td class="num">86.0%</td></tr><tr><td>浙江</td><td class="num">¥2,179,503</td><td class="num">12.2%</td><td class="num">44,249</td><td class="num">19.4%</td><td class="num">78.4%</td></tr><tr><td>江苏</td><td class="num">¥917,873</td><td class="num">5.2%</td><td class="num">17,889</td><td class="num">25.6%</td><td class="num">72.8%</td></tr><tr><td>福建</td><td class="num">¥833,468</td><td class="num">4.7%</td><td class="num">17,601</td><td class="num">22.2%</td><td class="num">75.0%</td></tr><tr><td>上海</td><td class="num">¥777,649</td><td class="num">4.4%</td><td class="num">15,731</td><td class="num">21.6%</td><td class="num">77.2%</td></tr><tr><td>四川</td><td class="num">¥758,714</td><td class="num">4.3%</td><td class="num">15,178</td><td class="num">18.8%</td><td class="num">80.6%</td></tr><tr><td>山东</td><td class="num">¥749,100</td><td class="num">4.2%</td><td class="num">15,747</td><td class="num">15.1%</td><td class="num">83.3%</td></tr><tr><td>北京</td><td class="num">¥568,239</td><td class="num">3.2%</td><td class="num">11,725</td><td class="num">27.5%</td><td class="num">69.2%</td></tr><tr><td>湖南</td><td class="num">¥457,312</td><td class="num">2.6%</td><td class="num">9,851</td><td class="num">18.9%</td><td class="num">79.0%</td></tr><tr><td>江西</td><td class="num">¥441,892</td><td class="num">2.5%</td><td class="num">8,070</td><td class="num">12.1%</td><td class="num">88.7%</td></tr><tr><td>湖北</td><td class="num">¥345,648</td><td class="num">1.9%</td><td class="num">7,078</td><td class="num">27.6%</td><td class="num">70.3%</td></tr><tr><td>河南</td><td class="num">¥309,243</td><td class="num">1.7%</td><td class="num">6,327</td><td class="num">28.3%</td><td class="num">69.2%</td></tr><tr><td>重庆</td><td class="num">¥300,934</td><td class="num">1.7%</td><td class="num">6,333</td><td class="num">20.6%</td><td class="num">77.4%</td></tr><tr><td>广西</td><td class="num">¥297,602</td><td class="num">1.7%</td><td class="num">5,747</td><td class="num">21.9%</td><td class="num">78.6%</td></tr><tr><td>河北</td><td class="num">¥277,696</td><td class="num">1.6%</td><td class="num">5,464</td><td class="num">23.8%</td><td class="num">73.5%</td></tr><tr><td>辽宁</td><td class="num">¥271,289</td><td class="num">1.5%</td><td class="num">5,527</td><td class="num">23.0%</td><td class="num">73.9%</td></tr><tr><td>安徽</td><td class="num">¥265,164</td><td class="num">1.5%</td><td class="num">5,352</td><td class="num">31.9%</td><td class="num">69.1%</td></tr><tr><td>陕西</td><td class="num">¥264,933</td><td class="num">1.5%</td><td class="num">5,077</td><td class="num">31.4%</td><td class="num">66.7%</td></tr><tr><td>云南</td><td class="num">¥191,421</td><td class="num">1.1%</td><td class="num">3,642</td><td class="num">20.2%</td><td class="num">78.8%</td></tr><tr><td>山西</td><td class="num">¥150,401</td><td class="num">0.8%</td><td class="num">2,780</td><td class="num">22.3%</td><td class="num">76.5%</td></tr>
+        </table>
+    </div>
+
+    <h3>1.6 国内城市TOP20</h3>
+    <div class="chart-box"><div id="chart_cn_city" class="chart" style="height:500px;"></div></div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">省份</th><th class="txt-l">城市</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th></tr>
+<tr><td>广东</td><td>广州市</td><td class="num">¥2,903,815</td><td class="num">16.3%</td><td class="num">61,469</td><td class="num">10.8%</td></tr><tr><td>浙江</td><td>杭州市</td><td class="num">¥955,690</td><td class="num">5.4%</td><td class="num">18,471</td><td class="num">24.2%</td></tr><tr><td>广东</td><td>深圳市</td><td class="num">¥835,799</td><td class="num">4.7%</td><td class="num">16,819</td><td class="num">26.0%</td></tr><tr><td>广东</td><td>佛山市</td><td class="num">¥820,192</td><td class="num">4.6%</td><td class="num">17,383</td><td class="num">12.0%</td></tr><tr><td>上海</td><td>上海市</td><td class="num">¥777,157</td><td class="num">4.4%</td><td class="num">15,718</td><td class="num">21.6%</td></tr><tr><td>广东</td><td>江门市</td><td class="num">¥718,580</td><td class="num">4.0%</td><td class="num">13,724</td><td class="num">4.4%</td></tr><tr><td>四川</td><td>成都市</td><td class="num">¥568,897</td><td class="num">3.2%</td><td class="num">11,132</td><td class="num">18.9%</td></tr><tr><td>北京</td><td>北京市</td><td class="num">¥567,692</td><td class="num">3.2%</td><td class="num">11,710</td><td class="num">27.6%</td></tr><tr><td>广东</td><td>东莞市</td><td class="num">¥506,868</td><td class="num">2.8%</td><td class="num">10,234</td><td class="num">12.9%</td></tr><tr><td>浙江</td><td>金华市</td><td class="num">¥457,809</td><td class="num">2.6%</td><td class="num">9,652</td><td class="num">8.9%</td></tr><tr><td>山东</td><td>威海市</td><td class="num">¥342,310</td><td class="num">1.9%</td><td class="num">7,074</td><td class="num">1.8%</td></tr><tr><td>江西</td><td>南昌市</td><td class="num">¥317,434</td><td class="num">1.8%</td><td class="num">5,516</td><td class="num">5.8%</td></tr><tr><td>重庆</td><td>重庆市</td><td class="num">¥300,790</td><td class="num">1.7%</td><td class="num">6,329</td><td class="num">20.6%</td></tr><tr><td>福建</td><td>泉州市</td><td class="num">¥278,480</td><td class="num">1.6%</td><td class="num">6,244</td><td class="num">17.3%</td></tr><tr><td>江苏</td><td>苏州市</td><td class="num">¥244,826</td><td class="num">1.4%</td><td class="num">4,978</td><td class="num">20.3%</td></tr><tr><td>湖北</td><td>武汉市</td><td class="num">¥217,164</td><td class="num">1.2%</td><td class="num">4,403</td><td class="num">29.7%</td></tr><tr><td>福建</td><td>厦门市</td><td class="num">¥206,591</td><td class="num">1.2%</td><td class="num">4,250</td><td class="num">31.0%</td></tr><tr><td>陕西</td><td>西安市</td><td class="num">¥191,952</td><td class="num">1.1%</td><td class="num">3,741</td><td class="num">32.5%</td></tr><tr><td>浙江</td><td>温州市</td><td class="num">¥190,309</td><td class="num">1.1%</td><td class="num">3,934</td><td class="num">19.1%</td></tr><tr><td>湖南</td><td>长沙市</td><td class="num">¥186,380</td><td class="num">1.0%</td><td class="num">4,054</td><td class="num">24.0%</td></tr>
+        </table>
+    </div>
+
+    <h3>1.7 国外国家销售分布</h3>
+    <div class="chart-box"><div id="chart_fw_country" class="chart" style="height:450px;"></div></div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">国家</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th><th class="txt-r">净毛利率</th></tr>
+<tr><td>美国</td><td class="num">¥554,569</td><td class="num">69.6%</td><td class="num">13,947</td><td class="num">5.5%</td><td class="num">94.7%</td></tr><tr><td>英国</td><td class="num">¥41,075</td><td class="num">5.2%</td><td class="num">764</td><td class="num">4.2%</td><td class="num">95.3%</td></tr><tr><td>加拿大</td><td class="num">¥38,419</td><td class="num">4.8%</td><td class="num">844</td><td class="num">0.2%</td><td class="num">99.7%</td></tr><tr><td>瑞典</td><td class="num">¥34,462</td><td class="num">4.3%</td><td class="num">917</td><td class="num">0.7%</td><td class="num">99.5%</td></tr><tr><td>日本</td><td class="num">¥24,386</td><td class="num">3.1%</td><td class="num">387</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>澳大利亚</td><td class="num">¥23,463</td><td class="num">2.9%</td><td class="num">593</td><td class="num">2.2%</td><td class="num">97.6%</td></tr><tr><td>意大利</td><td class="num">¥17,725</td><td class="num">2.2%</td><td class="num">482</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>法国</td><td class="num">¥14,510</td><td class="num">1.8%</td><td class="num">331</td><td class="num">3.9%</td><td class="num">97.9%</td></tr><tr><td>德国</td><td class="num">¥13,428</td><td class="num">1.7%</td><td class="num">259</td><td class="num">0.8%</td><td class="num">99.6%</td></tr><tr><td>俄罗斯</td><td class="num">¥4,114</td><td class="num">0.5%</td><td class="num">118</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>瑞士</td><td class="num">¥4,081</td><td class="num">0.5%</td><td class="num">102</td><td class="num">11.8%</td><td class="num">86.5%</td></tr><tr><td>墨西哥</td><td class="num">¥3,438</td><td class="num">0.4%</td><td class="num">127</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>西班牙</td><td class="num">¥3,320</td><td class="num">0.4%</td><td class="num">87</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>荷兰</td><td class="num">¥2,247</td><td class="num">0.3%</td><td class="num">58</td><td class="num">10.3%</td><td class="num">96.1%</td></tr><tr><td>波兰</td><td class="num">¥2,093</td><td class="num">0.3%</td><td class="num">84</td><td class="num">1.2%</td><td class="num">97.6%</td></tr><tr><td>泰国</td><td class="num">¥2,022</td><td class="num">0.3%</td><td class="num">151</td><td class="num">6.6%</td><td class="num">92.6%</td></tr><tr><td>新西兰</td><td class="num">¥1,959</td><td class="num">0.2%</td><td class="num">39</td><td class="num">2.6%</td><td class="num">98.5%</td></tr><tr><td>韩国</td><td class="num">¥1,787</td><td class="num">0.2%</td><td class="num">138</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>新加坡</td><td class="num">¥973</td><td class="num">0.1%</td><td class="num">50</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>奥地利</td><td class="num">¥886</td><td class="num">0.1%</td><td class="num">17</td><td class="num">0.0%</td><td class="num">100.0%</td></tr>
+        </table>
+    </div>
+
+    <h3>1.8 国外按价格带拆解</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_fw_price" class="chart"></div></div>
+        <div class="chart-box"><div id="chart_fw_country_price" class="chart" style="height:450px;"></div></div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">国家</th><th class="txt-l">价格带</th><th class="txt-r">销售金额</th><th class="txt-r">销售数量</th></tr>
+<tr><td>美国</td><td>50-100</td><td class="num">¥333,948</td><td class="num">8,773</td></tr><tr><td>美国</td><td>100-200</td><td class="num">¥141,097</td><td class="num">3,051</td></tr><tr><td>美国</td><td>200-500</td><td class="num">¥62,707</td><td class="num">1,348</td></tr><tr><td>瑞典</td><td>0-50</td><td class="num">¥26,762</td><td class="num">781</td></tr><tr><td>英国</td><td>50-100</td><td class="num">¥23,662</td><td class="num">374</td></tr><tr><td>加拿大</td><td>50-100</td><td class="num">¥21,200</td><td class="num">489</td></tr><tr><td>美国</td><td>0-50</td><td class="num">¥16,547</td><td class="num">770</td></tr><tr><td>澳大利亚</td><td>50-100</td><td class="num">¥14,108</td><td class="num">344</td></tr><tr><td>加拿大</td><td>100-200</td><td class="num">¥13,041</td><td class="num">231</td></tr><tr><td>日本</td><td>100-200</td><td class="num">¥12,777</td><td class="num">100</td></tr><tr><td>英国</td><td>100-200</td><td class="num">¥10,583</td><td class="num">135</td></tr><tr><td>意大利</td><td>0-50</td><td class="num">¥9,557</td><td class="num">310</td></tr><tr><td>日本</td><td>50-100</td><td class="num">¥9,220</td><td class="num">136</td></tr><tr><td>瑞典</td><td>50-100</td><td class="num">¥7,650</td><td class="num">135</td></tr><tr><td>法国</td><td>50-100</td><td class="num">¥7,270</td><td class="num">170</td></tr><tr><td>德国</td><td>50-100</td><td class="num">¥6,264</td><td class="num">143</td></tr><tr><td>德国</td><td>100-200</td><td class="num">¥5,551</td><td class="num">88</td></tr><tr><td>澳大利亚</td><td>100-200</td><td class="num">¥5,430</td><td class="num">107</td></tr><tr><td>英国</td><td>0-50</td><td class="num">¥5,058</td><td class="num">236</td></tr><tr><td>法国</td><td>100-200</td><td class="num">¥4,623</td><td class="num">90</td></tr><tr><td>俄罗斯</td><td>0-50</td><td class="num">¥4,075</td><td class="num">117</td></tr><tr><td>意大利</td><td>50-100</td><td class="num">¥3,306</td><td class="num">85</td></tr><tr><td>意大利</td><td>100-200</td><td class="num">¥2,939</td><td class="num">55</td></tr><tr><td>澳大利亚</td><td>0-50</td><td class="num">¥2,759</td><td class="num">122</td></tr><tr><td>加拿大</td><td>200-500</td><td class="num">¥2,445</td><td class="num">32</td></tr><tr><td>意大利</td><td>200-500</td><td class="num">¥1,924</td><td class="num">32</td></tr><tr><td>瑞士</td><td>100-200</td><td class="num">¥1,827</td><td class="num">30</td></tr><tr><td>墨西哥</td><td>50-100</td><td class="num">¥1,745</td><td class="num">34</td></tr><tr><td>加拿大</td><td>0-50</td><td class="num">¥1,734</td><td class="num">92</td></tr><tr><td>英国</td><td>200-500</td><td class="num">¥1,713</td><td class="num">18</td></tr>
+        </table>
+    </div>
+
+    <h3>1.9 爆款/滞销款特征</h3>
+    <div class="chart-row">
+        <div class="chart-box">
+            <h4 style="margin-bottom:10px;">TOP 20 爆款（按销售金额）</h4>
+            <div id="chart_top20" class="chart" style="height:500px;"></div>
+        </div>
+        <div class="chart-box">
+            <h4 style="margin-bottom:10px;">BOTTOM 20 滞销款</h4>
+            <div id="chart_bottom20" class="chart" style="height:500px;"></div>
+        </div>
+    </div>
+
+<div class="section">
+    <h2>Part 2 — 25 vs 26 同比对比</h2>
+
+    <h3>2.1 品类结构变化</h3>
+    <div class="chart-box"><div id="chart_cat_yoy" class="chart" style="height:450px;"></div></div>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">品类</th><th class="txt-r">2025金额</th><th class="txt-r">2026金额</th><th class="txt-r">金额同比</th><th class="txt-r">2025占比</th><th class="txt-r">2026占比</th><th class="txt-r">占比变化</th></tr>
+<tr><td>短袖T</td><td class="num">¥7,867,229</td><td class="num">¥10,005,526</td><td class="num down">+27.2%</td><td class="num">54.3%</td><td class="num">53.8%</td><td class="num">-0.6%</td></tr><tr><td>长裤</td><td class="num">¥3,107,365</td><td class="num">¥3,405,793</td><td class="num down">+9.6%</td><td class="num">21.5%</td><td class="num">18.3%</td><td class="num">-3.2%</td></tr><tr><td>短裤</td><td class="num">¥1,529,214</td><td class="num">¥2,096,501</td><td class="num down">+37.1%</td><td class="num">10.6%</td><td class="num">11.3%</td><td class="num">+0.7%</td></tr><tr><td>外套</td><td class="num">¥1,477,279</td><td class="num">¥1,352,034</td><td class="num up">-8.5%</td><td class="num">10.2%</td><td class="num">7.3%</td><td class="num">-2.9%</td></tr><tr><td>长袖T</td><td class="num">¥137,653</td><td class="num">¥1,263,639</td><td class="num down">+818.0%</td><td class="num">1.0%</td><td class="num">6.8%</td><td class="num">+5.8%</td></tr><tr><td>背心</td><td class="num">¥189,044</td><td class="num">¥346,585</td><td class="num down">+83.3%</td><td class="num">1.3%</td><td class="num">1.9%</td><td class="num">+0.6%</td></tr><tr><td>七分裤</td><td class="num">¥66,016</td><td class="num">¥55,241</td><td class="num up">-16.3%</td><td class="num">0.5%</td><td class="num">0.3%</td><td class="num">-0.2%</td></tr><tr><td>帽子</td><td class="num">¥0</td><td class="num">¥29,845</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.2%</td><td class="num">+0.2%</td></tr><tr><td>裙子</td><td class="num">¥5,541</td><td class="num">¥23,941</td><td class="num down">+332.1%</td><td class="num">0.0%</td><td class="num">0.1%</td><td class="num">+0.1%</td></tr><tr><td>短袖衬衫</td><td class="num">¥77,544</td><td class="num">¥17,764</td><td class="num up">-77.1%</td><td class="num">0.5%</td><td class="num">0.1%</td><td class="num">-0.4%</td></tr><tr><td>套装</td><td class="num">¥0</td><td class="num">¥7,167</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr><tr><td>背包</td><td class="num">¥0</td><td class="num">¥3,983</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr><tr><td>马甲</td><td class="num">¥14,531</td><td class="num">¥3,501</td><td class="num up">-75.9%</td><td class="num">0.1%</td><td class="num">0.0%</td><td class="num">-0.1%</td></tr><tr><td>饰品</td><td class="num">¥0</td><td class="num">¥671</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr><tr><td>卫衣</td><td class="num">¥0</td><td class="num">¥321</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr><tr><td>长袖衬衫</td><td class="num">¥0</td><td class="num">¥235</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr><tr><td>袜子</td><td class="num">¥0</td><td class="num">¥27</td><td class="num down">+0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">+0.0%</td></tr>
+        </table>
+    </div>
+
+    <h3>2.2 价格带偏移</h3>
+    <div class="chart-box"><div id="chart_price_yoy" class="chart" style="height:350px;"></div></div>
+
+    <h3>2.3 畅销色系趋势</h3>
+    <div class="chart-box"><div id="chart_color_yoy" class="chart" style="height:450px;"></div></div>
+
+    <h3>2.4 面料趋势变化</h3>
+    <div class="chart-box"><div id="chart_fabric_yoy" class="chart" style="height:350px;"></div></div>
+
+    <h3>2.5 月度销售趋势对比</h3>
+    <div class="chart-box"><div id="chart_month25" class="chart" style="height:400px;"></div></div>
+
+    <div class="insight-box">
+        <h4>关键同比洞察</h4>
+        <ul>
+            <li><strong>销售规模变化：</strong>2026春夏销售金额同比+28.6%，2025春夏¥14,476,519 vs 2026春夏¥18,612,774</li>
+            <li><strong>客单价变化：</strong>从¥54.3变至¥48.7</li>
+            <li><strong>退货率变化：</strong>从15.0%变至17.9%</li>
+            <li><strong>SKU数量变化：</strong>从369变至1214</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<div class="section">
+    <h2>Part 3 — 问题诊断与业务机会深度分析</h2>
+    <p style="color:#718096;margin-bottom:16px;font-size:13px;">基于2026年春夏发货数据（对比2025年春夏发货数据），从8个业务维度提取可落地的 actionable insights</p>
+
+    <div class="insight-box">
+        <h4>一、产品开发方向 — 从"数据盲区"到"精准开发"</h4>
+        <ul>
+            <li><b>面料数据是最大盲区：</b>全店30.1%销售记录面料成份为空（归类为"未知"），占销售总额560万元。棉类占比36.5%为第一大面料，涤纶24.0%次之。<b>行动：</b>强制要求供应链在入库环节录入面料成份，将面料完整率纳入供应商KPI；对现有畅销款 retroactively 补录面料信息。</li>
+            <li><b>颜色高度依赖黑色：</b>黑色单品占销售15.7%为第一大色，黑白灰系（黑+白+米白+深灰+炭黑）合计约29.8%，色彩策略偏保守。<b>行动：</b>减少黑白灰SKU占比至25%以下，每年春夏新增3-5个趋势色系（参考"图片色"单品占2.0%销售份额，说明非传统色仍有市场空间），通过小批量测色再放大。</li>
+            <li><b>爆款共性可复用：</b>TOP1爆款220SS销售116万元、3个颜色、退货率16.3%；TOP3爆款2309SS有17个颜色、退货率仅9.6%。<b>行动：</b>新品开发强制要求≥4个颜色，首单控制在500件以内测款，7天售罄率>30%再追单。</li>
+            <li><b>品类结构调整机会：</b>短袖T占比53.8%是绝对主力（YoY+27.2%），长袖T爆发增长818%（占比从1.0%升至6.8%），外套下降8.5%（占比从10.2%降至7.3%）。<b>行动：</b>秋冬加大外套投入（当前退货率30.9%但毛利率68.5%，需先控退货），春夏维持短袖T主力地位的同时拓展长袖T增长线。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>二、库存管控方向 — 从"SKU膨胀"到"效率优先"</h4>
+        <ul>
+            <li><b>SKU效率极不均衡：</b>2026年SKU数从369个暴增至1,214个（+229%），但销售仅增长28.6%，SKU效率显著下降。短袖T以529个SKU贡献53.8%销售额，长裤346个SKU贡献18.3%。<b>行动：</b>建立SKU分级制度 — S级（TOP 10%）保证深度库存，A级（10-30%）保持合理库存，B级（30-60%）以销定产，C级（后40%）季度末清仓淘汰。</li>
+            <li><b>SKU扩张速度远超销售增长：</b>SU数增长229%但销售额仅增长28.6%，说明大量新增SKU未产生有效销售。<b>行动：</b>对新开发款设置"首单500件+7天动销率>20%"的准入门槛，淘汰连续2周0动销的新品。</li>
+            <li><b>面料缺失导致库存风险：</b>30.1%记录面料为"未知"，无法通过面料维度分析哪些材质滞销。<b>行动：</b>3个月内完成历史款面料补录，建立"面料-品类-周转天数"三维库存监控表。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>三、补货与调拨方向 — 从"经验驱动"到"数据驱动"</h4>
+        <ul>
+            <li><b>区域销售高度集中：</b>广东（37.3%）+ 浙江（12.2%）两省占近50%，广东一省独大。<b>行动：</b>建立"广东优先补货，中西部以销定补"的分级补货机制；对四川（4.3%）、山东（4.2%）、福建（4.7%）等省份增加安全库存至1.5倍。</li>
+            <li><b>城市级精细化调拨：</b>TOP3城市（广州290万、杭州96万、深圳84万）占国内销售约26%。<b>行动：</b>对TOP10城市建立单独补货模型（每周滚动预测），其他城市按省份汇总补货，降低物流成本。</li>
+            <li><b>退货率分层调拨策略：</b>安徽（31.9%）、陕西（31.4%）、河南（28.3%）退货率极高，说明尺码或质量认知存在区域差异。<b>行动：</b>高退货率省份优先发"标准码"（M/L），减少XS/XL投放；同时在详情页增加尺码对照表和面料说明。</li>
+            <li><b>国外市场独立补货：</b>国外退货率较低（美国5.5%，多数国家<1%），美国占国外69.6%且毛利率94.7%。<b>行动：</b>为美国市场单独备货TOP 20%爆款，采用空运小批量高频补货模式。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>四、定价策略方向 — 客单价下滑10%的隐忧与机会</h4>
+        <ul>
+            <li><b>客单价下滑信号：</b>客单价从54.3元降至48.7元（-10.3%），虽然销售数量增长43.3%，但客单价下滑说明低价化趋势加剧。<b>行动：</b>建立"客单价月度监控"机制，避免低价带过度扩张稀释品牌价值；设置价格弹性测试机制，每月对5% SKU做A/B定价测试。</li>
+            <li><b>价格带偏移风险：</b>2026年0-50元占比50.4%（2025年41.7%），上升8.7个百分点；50-100元占比从50.4%降至43.1%。<b>行动：</b>控制0-50元款式数量占比在45%以内，将资源向50-100元（当前占比43.1%，毛利率79.1%）和100-200元（占比6.1%，毛利率75.5%）迁移。</li>
+            <li><b>品类定价差异化：</b>短袖T平均售价40.4元（走量），外套88.1元（最高），长裤75.2元。<b>行动：</b>外套可适当提价至100-120元（当前退货率30.9%需先改善）；短袖T需推出60-80元品质升级款打破低价印象；长裤维持70-80元走量。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>五、海外市场方向 — 被低估的高毛利增长极</h4>
+        <ul>
+            <li><b>国外是"高毛利、低退货"的蓝海：</b>国外整体毛利率显著高于国内（美国94.7%、加拿大99.7%、瑞典99.5%），退货率普遍低于国内（美国5.5%，多数国家<1%，国内17.9%）。<b>行动：</b>将国外从"自然流量"升级为"战略市场"，配置专人运营，增加国外专属SKU。</li>
+            <li><b>美国一家独大可深耕：</b>美国占国外69.6%且毛利率94.7%，是海外最大市场。<b>行动：</b>针对美国市场开发专属款，加大投入力度，将美国市场从自然流量转为主动运营。</li>
+            <li><b>英国/加拿大/瑞典值得测试：</b>英国占国外5.2%、加拿大4.8%、瑞典4.3%，毛利率均在95%以上。<b>行动：</b>向这些国家定向投放100-200元价格带产品，测试高客单市场接受度。</li>
+            <li><b>国外品类结构差异化：</b>国外与国内品类结构不同，需根据当地需求调整选品策略。<b>行动：</b>分析各国TOP品类，针对性开发海外专属款而非简单复制国内产品。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>六、退货管控方向 — 从"事后处理"到"事前预防"</h4>
+        <ul>
+            <li><b>品类级退货预警：</b>外套（30.9%）、长袖T（25.3%）退货率显著高于均值（17.9%）。短袖T退货率16.8%接近均值但因体量大退货绝对数量最多。<b>行动：</b>对退货率>25%品类强制要求详情页增加"真人试穿视频"和"面料触感描述"；首单减少20%订货量，通过预售测试真实需求。</li>
+            <li><b>区域级退货干预：</b>安徽（31.9%）、陕西（31.4%）、河南（28.3%）、湖北（27.6%）退货率远高于广东（13.6%）。<b>行动：</b>对这些省份的订单增加发货前质检（抽检率从5%提至15%）；物流优先选择送货上门（减少驿站自提导致的"不试就退"）。</li>
+            <li><b>退货率同比恶化：</b>整体退货率从15.0%升至17.9%（+2.9个百分点），需重点关注。<b>行动：</b>分析退货原因标签（尺码不符/质量/不喜欢），对高频退货原因建立预警机制。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>七、数据治理方向 — 没有数据就没有决策</h4>
+        <ul>
+            <li><b>面料信息是首要补齐项：</b>30.1%记录面料为"未知"，直接导致无法做面料趋势分析和面料维度的库存预警。<b>行动：</b>在ERP中设置面料为必填字段，阻断缺失面料的入库流程；3个月内 retroactive 补录TOP 500畅销款面料信息。</li>
+            <li><b>建立"款式生命周期"数据档案：</b>当前无法追踪单款从上市到退市的完整表现。<b>行动：</b>为每款建立"首销日期-周销趋势-补货次数-清仓日期"档案，用于指导未来开发节奏。</li>
+            <li><b>颜色命名标准化：</b>当前存在"黑色/炭黑/活性黑/黑加仑"等近义色名，增加库存管理复杂度。<b>行动：</b>建立颜色主数据表，将相似色合并为标准化色名（如所有"黑"系列统一归入"黑/深灰/浅灰"）。</li>
+        </ul>
+    </div>
+
+    <div class="insight-box">
+        <h4>八、组织架构建议 — 让数据落地到责任人</h4>
+        <ul>
+            <li><b>设立"商品效率官"角色：</b>负责每周监控SKU动销率、库存周转天数、退货率预警，直接向商品总监汇报，打破"开发只管开发、运营只管卖货"的部门墙。2026年SKU暴增229%但销售仅增28.6%，效率监控刻不容缓。</li>
+            <li><b>建立"爆款复制小组"：</b>由买手+设计师+数据分析师组成，每季度复盘TOP 20爆款的成功要素（颜色数、价格带、面料、上新时机），输出《爆款开发SOP》。</li>
+            <li><b>国外市场独立运营：</b>当前国外仅占4.3%销售但毛利率高达95%+，建议配置1名海外运营专员，负责美国/英国/加拿大市场的选品、定价和本地化营销。</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+var c1 = echarts.init(document.getElementById('chart_cat_pie'));
+c1.setOption({
+    title:{text:'品类销售占比',left:'center'},
+    tooltip:{trigger:'item',formatter:'{b}: \u00a5{c} ({d}%)'},
+    series:[{type:'pie',radius:['40%','70%'],
+        data:[{"name": "短袖T", "value": 10005525.7}, {"name": "长裤", "value": 3405793.13}, {"name": "短裤", "value": 2096500.78}, {"name": "外套", "value": 1352034.19}, {"name": "长袖T", "value": 1263638.99}, {"name": "背心", "value": 346585.1}, {"name": "七分裤", "value": 55240.92}, {"name": "帽子", "value": 29845.38}, {"name": "裙子", "value": 23941.29}, {"name": "短袖衬衫", "value": 17763.69}, {"name": "套装", "value": 7166.55}, {"name": "背包", "value": 3982.68}, {"name": "马甲", "value": 3501.3}, {"name": "饰品", "value": 671.31}, {"name": "卫衣", "value": 321.24}, {"name": "长袖衬衫", "value": 235.07}, {"name": "袜子", "value": 26.82}],
+        label:{formatter:'{b}\n{d}%'}
+    }]
+});
+
+var c2 = echarts.init(document.getElementById('chart_cat_bar'));
+c2.setOption({
+    title:{text:'品类退货率 vs 毛利率',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['退货率%','净毛利率%'],bottom:0},
+    xAxis:{type:'category',data:["短袖T", "长裤", "短裤", "外套", "长袖T", "背心", "七分裤", "帽子", "裙子", "短袖衬衫", "套装", "背包", "马甲", "饰品", "卫衣", "长袖衬衫", "袜子"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%'},
+    series:[
+        {name:'退货率%',type:'bar',data:[16.8, 17.8, 14.7, 30.9, 25.3, 19.5, 6.1, 25.6, 28.2, 6.4, 11.8, 20.0, 46.7, 56.1, 20.0, 0.0, 0.0],itemStyle:{color:'#fc8181'}},
+        {name:'净毛利率%',type:'bar',data:[82.4, 80.8, 84.5, 68.5, 74.7, 80.2, 93.7, 68.8, 71.4, 93.6, 89.4, 82.9, 67.5, 66.1, 89.6, 100.0, 100.0],itemStyle:{color:'#48bb78'}}
+    ]
+});
+
+var c3 = echarts.init(document.getElementById('chart_price'));
+c3.setOption({
+    title:{text:'价格带销售金额',left:'center'},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:["0-50", "50-100", "100-200", "200-500", "500+"]},
+    yAxis:{type:'value',name:'元'},
+    series:[{type:'bar',data:[9380367.95, 8017996.17, 1133691.37, 80389.04, 329.61],itemStyle:{color:'#667eea'}}]
+});
+
+var c4 = echarts.init(document.getElementById('chart_price_margin'));
+c4.setOption({
+    title:{text:'价格带净毛利率',left:'center'},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:["0-50", "50-100", "100-200", "200-500", "500+"]},
+    yAxis:{type:'value',name:'%',max:100},
+    series:[{type:'line',data:[82.7, 79.1, 75.5, 94.2, 100.0],itemStyle:{color:'#48bb78'},areaStyle:{opacity:0.3}}]
+});
+
+var c5 = echarts.init(document.getElementById('chart_color'));
+c5.setOption({
+    title:{text:'TOP15颜色销售金额',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'category',data:["黑色", "白色", "米白", "深灰", "炭黑", "山竹白", "图片色", "树皮棕", "黑加仑", "活性黑", "浅灰", "卡其", "灰色", "苔藓黄", "牙白"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'元'},
+    series:[{type:'bar',data:[2918105.24, 1055042.4, 644696.05, 507907.75, 412930.99, 394372.24, 380004.27, 372607.59, 356373.69, 293935.83, 263688.39, 263114.4, 260472.46, 242390.53, 237090.27],itemStyle:{color:'#ed8936'}}]
+});
+
+var c6 = echarts.init(document.getElementById('chart_color_return'));
+c6.setOption({
+    title:{text:'颜色退货率%',left:'center'},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:["黑色", "白色", "米白", "深灰", "炭黑", "山竹白", "图片色", "树皮棕", "黑加仑", "活性黑", "浅灰", "卡其", "灰色", "苔藓黄", "牙白"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%'},
+    series:[{type:'bar',data:[15.4, 18.8, 15.9, 19.4, 14.5, 14.7, 20.7, 24.5, 13.5, 15.2, 12.4, 24.6, 23.8, 25.7, 10.8],itemStyle:{color:'#fc8181'}}]
+});
+
+var c7 = echarts.init(document.getElementById('chart_fabric'));
+c7.setOption({
+    title:{text:'面料大类销售占比',left:'center'},
+    tooltip:{trigger:'item',formatter:'{b}: \u00a5{c} ({d}%)'},
+    series:[{type:'pie',radius:'60%',
+        data:[{"name": "棉", "value": 6796890.12}, {"name": "未知", "value": 5604645.15}, {"name": "涤纶", "value": 4463416.73}, {"name": "其它", "value": 1490089.05}, {"name": "毛", "value": 212567.1}, {"name": "麻", "value": 45083.77}, {"name": "腈纶", "value": 52.53}, {"name": "尼龙", "value": 29.69}],
+        label:{formatter:'{b}\n{d}%'}
+    }]
+});
+
+var c8 = echarts.init(document.getElementById('chart_fabric_margin'));
+c8.setOption({
+    title:{text:'面料大类净毛利率%',left:'center'},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:["棉", "未知", "涤纶", "其它", "毛", "麻", "腈纶", "尼龙"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%'},
+    series:[{type:'bar',data:[83.7, 82.2, 76.7, 74.1, 84.1, 68.9, 100.0, 100.0],itemStyle:{color:'#38b2ac'}}]
+});
+
+var c9 = echarts.init(document.getElementById('chart_cn_province'));
+c9.setOption({
+    title:{text:'国内省份销售金额TOP20',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',name:'元'},
+    yAxis:{type:'category',data:["山西", "云南", "陕西", "安徽", "辽宁", "河北", "广西", "重庆", "河南", "湖北", "江西", "湖南", "北京", "山东", "四川", "上海", "福建", "江苏", "浙江", "广东"],axisLabel:{fontSize:11}},
+    series:[{type:'bar',data:[150400.84, 191421.31, 264932.57, 265163.73, 271289.4, 277696.5, 297601.86, 300934.19, 309243.46, 345648.12, 441891.65, 457311.55, 568238.59, 749099.61, 758713.78, 777648.91, 833468.21, 917873.21, 2179502.8, 6642867.87],itemStyle:{color:'#667eea'}}]
+});
+
+var c10 = echarts.init(document.getElementById('chart_cn_city'));
+c10.setOption({
+    title:{text:'国内城市TOP20销售金额',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',name:'元'},
+    yAxis:{type:'category',data:["湖南-长沙市", "浙江-温州市", "陕西-西安市", "福建-厦门市", "湖北-武汉市", "江苏-苏州市", "福建-泉州市", "重庆-重庆市", "江西-南昌市", "山东-威海市", "浙江-金华市", "广东-东莞市", "北京-北京市", "四川-成都市", "广东-江门市", "上海-上海市", "广东-佛山市", "广东-深圳市", "浙江-杭州市", "广东-广州市"],axisLabel:{fontSize:10}},
+    series:[{type:'bar',data:[186379.53, 190309.07, 191952.21, 206591.37, 217163.7, 244826.48, 278480.0, 300789.79, 317433.56, 342310.08, 457809.07, 506868.02, 567691.59, 568897.13, 718579.53, 777156.91, 820192.13, 835798.68, 955689.56, 2903814.84],itemStyle:{color:'#4299e1'}}]
+});
+
+var c11 = echarts.init(document.getElementById('chart_fw_country'));
+c11.setOption({
+    title:{text:'国外国家销售金额TOP15',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',name:'元'},
+    yAxis:{type:'category',data:["波兰", "荷兰", "西班牙", "墨西哥", "瑞士", "俄罗斯", "德国", "法国", "意大利", "澳大利亚", "日本", "瑞典", "加拿大", "英国", "美国"],axisLabel:{fontSize:11}},
+    series:[{type:'bar',data:[2093.22, 2247.44, 3319.64, 3438.14, 4080.93, 4113.8, 13427.55, 14509.61, 17725.41, 23462.82, 24386.0, 34462.2, 38419.43, 41075.27, 554568.63],itemStyle:{color:'#ed8936'}}]
+});
+
+var c12 = echarts.init(document.getElementById('chart_fw_price'));
+c12.setOption({
+    title:{text:'国外价格带销售金额',left:'center'},
+    tooltip:{trigger:'axis'},
+    xAxis:{type:'category',data:["50-100", "100-200", "0-50", "200-500", "500+"]},
+    yAxis:{type:'value',name:'元'},
+    series:[{type:'bar',data:[440422.86, 203809.22, 77786.56, 74344.38, 329.61],itemStyle:{color:'#ed8936'}}]
+});
+
+var c13 = echarts.init(document.getElementById('chart_fw_country_price'));
+c13.setOption({
+    title:{text:'国外国家×价格带销售金额',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:["0-50", "50-100", "100-200", "200-500", "500+"],bottom:0},
+    xAxis:{type:'category',data:["加拿大", "德国", "意大利", "日本", "法国", "澳大利亚", "瑞典", "美国", "英国"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'元'},
+    series:[
+        {name:'0-50',type:'bar',stack:'total',data:[1734.03, 314.76, 9556.8, 1548.34, 1626.96, 2758.87, 26762.0, 16546.84, 5058.23],itemStyle:{color:'#a0aec0'}},
+        {name:'50-100',type:'bar',stack:'total',data:[21200.0, 6264.31, 3306.12, 9220.33, 7270.32, 14107.64, 7650.21, 333948.2, 23661.76],itemStyle:{color:'#4299e1'}},
+        {name:'100-200',type:'bar',stack:'total',data:[13040.56, 5550.7, 2938.53, 12776.87, 4622.78, 5430.48, 49.99, 141097.11, 10582.63],itemStyle:{color:'#667eea'}},
+        {name:'200-500',type:'bar',stack:'total',data:[2444.84, 1297.78, 1923.96, 840.46, 989.55, 1165.83, 0, 62706.86, 1712.66],itemStyle:{color:'#ed8936'}},
+        {name:'500+',type:'bar',stack:'total',data:[0, 0, 0, 0, 0, 0, 0, 269.62, 59.99],itemStyle:{color:'#e53e3e'}}
+    ]
+});
+
+var c14 = echarts.init(document.getElementById('chart_top20'));
+c14.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',name:'元'},
+    yAxis:{type:'category',data:["12252S23", "5675SS", "12122S23", "260SS", "1195SS", "WM12662S24", "SUB8351S25", "12408S24", "12765S25", "8087S25", "2308SS", "119SS", "1194SS", "919S24", "929S25", "567SS", "12720S25", "2309SS", "2301SS", "220SS"],axisLabel:{fontSize:10}},
+    series:[{type:'bar',data:[168564.17, 176505.55, 240351.73, 244474.82, 245482.11, 249447.63, 284609.07, 285839.03, 297986.38, 300123.44, 309573.39, 402490.55, 415375.61, 473723.89, 484292.01, 552967.74, 554594.89, 591134.44, 717475.14, 1159017.62],itemStyle:{color:'#48bb78'}}]
+});
+
+var c15 = echarts.init(document.getElementById('chart_bottom20'));
+c15.setOption({
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    xAxis:{type:'value',name:'元'},
+    yAxis:{type:'category',data:["6027GS21", "8808", "988AI2021", "WM8284S25", "489AI2021", "BOL-111", "522", "8058S25", "12520S24", "8065S25", "3232S24", "9121S24", "8064S25", "3053S24", "8076S25", "730AI2020", "WM8309S25", "GPC9813", "12455S24", "849-1"],axisLabel:{fontSize:10}},
+    series:[{type:'bar',data:[28.25, 28.05, 26.82, 26.05, 25.4, 24.32, 21.38, 20.25, 19.84, 12.59, 12.41, 12.41, 8.8, 8.79, 8.4, 4.29, 0.0, 0.0, 0.0, 0.0],itemStyle:{color:'#fc8181'}}]
+});
+
+var c16 = echarts.init(document.getElementById('chart_cat_yoy'));
+c16.setOption({
+    title:{text:'品类销售金额同比 (万元)',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:["短袖T", "长裤", "短裤", "外套", "长袖T", "背心", "七分裤", "帽子", "裙子", "短袖衬衫", "套装", "背包", "马甲", "饰品", "卫衣", "长袖衬衫", "袜子"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'万元'},
+    series:[
+        {name:'2025',type:'bar',data:[786.72, 310.74, 152.92, 147.73, 13.77, 18.9, 6.6, 0.0, 0.55, 7.75, 0.0, 0.0, 1.45, 0.0, 0.0, 0.0, 0.0],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[1000.55, 340.58, 209.65, 135.2, 126.36, 34.66, 5.52, 2.98, 2.39, 1.78, 0.72, 0.4, 0.35, 0.07, 0.03, 0.02, 0.0],itemStyle:{color:'#667eea'}}
+    ]
+});
+
+var c17 = echarts.init(document.getElementById('chart_price_yoy'));
+c17.setOption({
+    title:{text:'价格带占比变化 (%)',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:["0-50", "50-100", "100-200", "200-500", "500+"]},
+    yAxis:{type:'value',name:'%'},
+    series:[
+        {name:'2025',type:'bar',data:[41.7, 50.4, 7.8, 0, 0],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[50.4, 43.1, 6.1, 0.4, 0.0],itemStyle:{color:'#667eea'}}
+    ]
+});
+
+var c18 = echarts.init(document.getElementById('chart_color_yoy'));
+c18.setOption({
+    title:{text:'畅销颜色占比变化 (%)',left:'center'},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:["黑色", "白色", "米白", "深灰", "炭黑", "山竹白", "图片色", "树皮棕", "黑加仑", "活性黑", "浅灰", "卡其", "灰色", "苔藓黄", "牙白"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%'},
+    series:[
+        {name:'2025',type:'bar',data:[18.3, 4.9, 5.9, 3.5, 0, 0, 0, 3.0, 0, 2.0, 1.5, 1.6, 1.4, 0, 0],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[15.7, 5.7, 3.5, 2.7, 2.2, 2.1, 2.0, 2.0, 1.9, 1.6, 1.4, 1.4, 1.4, 1.3, 1.3],itemStyle:{color:'#ed8936'}}
+    ]
+});
+
+var c19 = echarts.init(document.getElementById('chart_fabric_yoy'));
+c19.setOption({
+    title:{text:'面料大类占比变化 (%)',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:["棉", "未知", "涤纶", "其它", "毛", "麻", "腈纶", "尼龙"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%'},
+    series:[
+        {name:'2025',type:'bar',data:[44.0, 16.9, 27.7, 11.5, 0.0, 0, 0, 0],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[36.5, 30.1, 24.0, 8.0, 1.1, 0.2, 0.0, 0.0],itemStyle:{color:'#38b2ac'}}
+    ]
+});
+
+var c20 = echarts.init(document.getElementById('chart_month25'));
+c20.setOption({
+    title:{text:'月度销售趋势对比 (万元)',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['2025销售(万元)','2026销售(万元)','2025退货率%','2026退货率%'],bottom:0},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月']},
+    yAxis:[{type:'value',name:'万元',position:'left'},{type:'value',name:'%',position:'right',max:40}],
+    series:[
+        {name:'2025销售(万元)',type:'bar',data:[50.2, 102.17, 255.96, 359.61, 368.18, 311.54],itemStyle:{color:'#a0aec0'}},
+        {name:'2026销售(万元)',type:'bar',data:[138.82, 130.15, 333.24, 465.1, 420.37, 373.6],itemStyle:{color:'#667eea'}},
+        {name:'2025退货率%',type:'line',yAxisIndex:1,data:[11.2, 12.2, 11.9, 15.1, 15.6, 18.1],itemStyle:{color:'#fc8181'}},
+        {name:'2026退货率%',type:'line',yAxisIndex:1,data:[12.2, 14.1, 19.6, 18.0, 19.2, 18.4],itemStyle:{color:'#e53e3e'}}
+    ]
+});
+
+window.addEventListener('resize',function(){
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20].forEach(function(c){c.resize();});
+});
+</script>
+</body>
+</html>
