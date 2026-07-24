@@ -223,6 +223,84 @@ tr:hover td { background:#e8f0ff; }
 </div>
 
 <div class="section">
+    <h2>Part 2.5 — 售罄率专项分析（进销存视角）</h2>
+    <p style="color:#718096;margin-bottom:16px;font-size:13px;">基于进销存报表（期初数量+采购进仓+加工进仓）与发货数据交叉计算，还原每款可售总量与实际净销售的比值</p>
+
+    <div class="kpi-grid">
+        <div class="kpi-card">
+        <div class="label">整体售罄率(2026)</div>
+        <div class="value">46.3%</div>
+        <div class="change down">YoY -19.2% (2025: 57.3%)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">平均款售罄率</div>
+        <div class="value">52.4%</div>
+        <div class="change down">YoY -11.2% (2025: 59.0%)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">中位数售罄率</div>
+        <div class="value">49.0%</div>
+        <div class="change down">YoY -19.9% (2025: 61.2%)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">分析款式数</div>
+        <div class="value">1,200</div>
+        <div class="change up">YoY +231.5% (2025: 362)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">可售总量</div>
+        <div class="value">682,646件</div>
+        <div class="change up">YoY +72.6% (2025: 395,587件)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">净销售总量</div>
+        <div class="value">315,828件</div>
+        <div class="change up">YoY +39.4% (2025: 226,492件)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">滞销款占比(<30%)</div>
+        <div class="value">32.4%</div>
+        <div class="change down">YoY +143.6% (2025: 13.3%)</div>
+    </div>
+        <div class="kpi-card">
+        <div class="label">畅销款占比(>80%)</div>
+        <div class="value">24.6%</div>
+        <div class="change up">YoY +7.4% (2025: 22.9%)</div>
+    </div>
+    </div>
+
+    <h3>2.5.1 品类售罄率同比对比</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_st_cat" class="chart" style="height:400px;"></div></div>
+        <div class="chart-box"><div id="chart_st_dist" class="chart" style="height:400px;"></div></div>
+    </div>
+
+    <h3>2.5.2 品类售罄率明细</h3>
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">品类</th><th class="txt-r">2025售罄率</th><th class="txt-r">2026售罄率</th><th class="txt-r">变化</th><th class="txt-r">2025款式数</th><th class="txt-r">2026款式数</th><th class="txt-r">2026可售总量</th><th class="txt-r">2026净销售</th><th class="txt-r">2026销售金额</th><th class="txt-r">趋势</th></tr>
+<tr><td>短袖T</td><td class="num">61.5%</td><td class="num">47.2%</td><td class="num">-14.3pp</td><td class="num">214</td><td class="num">529</td><td class="num">439,399</td><td class="num">207,434</td><td class="num">¥10,078,330</td><td><span class="tag tag-warn">关注</span></td></tr><tr><td>长裤</td><td class="num">59.4%</td><td class="num">46.5%</td><td class="num">-12.9pp</td><td class="num">66</td><td class="num">337</td><td class="num">81,279</td><td class="num">37,792</td><td class="num">¥3,463,706</td><td><span class="tag tag-warn">关注</span></td></tr><tr><td>短裤</td><td class="num">47.0%</td><td class="num">46.9%</td><td class="num">-0.1pp</td><td class="num">33</td><td class="num">123</td><td class="num">65,470</td><td class="num">30,738</td><td class="num">¥2,106,318</td><td><span class="tag tag-warn">关注</span></td></tr><tr><td>外套</td><td class="num">40.1%</td><td class="num">32.7%</td><td class="num">-7.4pp</td><td class="num">11</td><td class="num">40</td><td class="num">32,982</td><td class="num">10,783</td><td class="num">¥1,371,134</td><td><span class="tag tag-bad">预警</span></td></tr><tr><td>长袖T</td><td class="num">37.2%</td><td class="num">51.2%</td><td class="num">+14.0pp</td><td class="num">14</td><td class="num">44</td><td class="num">38,547</td><td class="num">19,724</td><td class="num">¥1,268,810</td><td><span class="tag tag-warn">关注</span></td></tr><tr><td>背心</td><td class="num">47.7%</td><td class="num">37.8%</td><td class="num">-9.9pp</td><td class="num">6</td><td class="num">28</td><td class="num">19,716</td><td class="num">7,458</td><td class="num">¥348,905</td><td><span class="tag tag-bad">预警</span></td></tr><tr><td>七分裤</td><td class="num">38.5%</td><td class="num">67.1%</td><td class="num">+28.6pp</td><td class="num">4</td><td class="num">39</td><td class="num">1,281</td><td class="num">859</td><td class="num">¥55,241</td><td><span class="tag tag-good">健康</span></td></tr><tr><td>帽子</td><td class="num">0.0%</td><td class="num">20.9%</td><td class="num">+20.9pp</td><td class="num">0</td><td class="num">5</td><td class="num">1,129</td><td class="num">236</td><td class="num">¥29,845</td><td><span class="tag tag-bad">预警</span></td></tr><tr><td>裙子</td><td class="num">10.1%</td><td class="num">43.9%</td><td class="num">+33.8pp</td><td class="num">1</td><td class="num">3</td><td class="num">446</td><td class="num">196</td><td class="num">¥23,941</td><td><span class="tag tag-warn">关注</span></td></tr><tr><td>短袖衬衫</td><td class="num">50.3%</td><td class="num">60.3%</td><td class="num">+10.0pp</td><td class="num">10</td><td class="num">19</td><td class="num">647</td><td class="num">390</td><td class="num">¥17,738</td><td><span class="tag tag-good">健康</span></td></tr><tr><td>套装</td><td class="num">0.0%</td><td class="num">21.1%</td><td class="num">+21.1pp</td><td class="num">0</td><td class="num">2</td><td class="num">426</td><td class="num">90</td><td class="num">¥7,167</td><td><span class="tag tag-bad">预警</span></td></tr><tr><td>背包</td><td class="num">0.0%</td><td class="num">24.3%</td><td class="num">+24.3pp</td><td class="num">0</td><td class="num">18</td><td class="num">379</td><td class="num">92</td><td class="num">¥3,983</td><td><span class="tag tag-bad">预警</span></td></tr>
+        </table>
+    </div>
+
+    <div class="insight-box">
+        <h4>售罄率核心发现 — 老板视角</h4>
+        <ul>
+<li><b>整体售罄率下滑是最大警示信号：</b>整体售罄率从57.3%降至46.3%，中位数从61.2%降至49.0。这意味着<b>每投入100件货，有近一半卖不掉</b>，变成库存沉淀。以2026年可售总量682,646件计算，售罄率每下降1个百分点，就多积压约6,826件库存。</li><li><b>SKU膨胀是售罄率下降的根本原因：</b>款式从362个增至1200个（++838.0），但可售总量仅增长73%。大量新增SKU稀释了单款备货深度，导致<b>"款多量少"的薄摊模式</b>，既无法形成爆款规模效应，又增加了供应链复杂度。</li><li><b>滞销款占比翻倍是库存风险的核心：</b>售罄率<30%的滞销款占比从13.3%飙升至32.4%（388款），这意味着将近三分之一的款式<b>几乎没有产生有效销售</b>。按可售总量推算，这些滞销款占用的备货资金可能高达数百万元，且面临季末清仓折损。</li><li><b>短袖T是关键战场：</b>作为绝对主力品类（529款，占可售总量的64.3%），短袖T售罄率从61.5%降至47.2%（-14.3pp），直接拉低整体水平。529个SKU中预计有超过170款售罄率<30%，是库存积压的第一重灾区。<b>建议：短袖T SKU数量砍半至250-300个，集中备货深度，目标售罄率回升至60%以上。</b></li><li><b>亮点品类：七分裤和长袖T逆势上升：</b>七分裤售罄率从38.5%升至67.1%（+28.6pp），长袖T从37.2%升至51.2%（+14.0pp），说明这两个品类的选品和定价策略更精准，是值得加大投入的方向。<b>建议：将七分裤和长袖T的成功要素（SKU控制、价格带聚焦、颜色数精简）复制到短袖T和长裤。</b></li><li><b>外套品类低售罄+高退货 = 双重风险：</b>外套售罄率仅32.7%（在款式数≥10的品类中最低），同时退货率高达30.9%。低售罄说明货不对路，高退货说明产品力不足。<b>建议：外套品类缩减至15-20个SKU，优先保证面料质量和版型准确性，季前小批量预售验证后再下大单。</b></li>
+        </ul>
+    </div>
+
+    <div class="insight-box" style="border-left-color:#e53e3e;background:#fff5f5;">
+        <h4 style="color:#c53030;">决策建议摘要</h4>
+        <ul>
+            <li><b>短期（本季末）：</b>立即对售罄率<20%的款式启动清仓，回笼资金；对售罄率20-40%的款式分析原因（定价/尺码/颜色），为下季选品提供参考。</li>
+            <li><b>中期（下季开发）：</b>总SKU数控制在800个以内（2026年1,200个太多）；每品类SKU数与该品类销售占比挂钩，短袖T不超过350个，长裤不超过200个。</li>
+            <li><b>长期（供应链）：</b>建立"首单+追单"机制 — 首单每款不超过500件，7天售罄率>40%的款才启动追单，从源头避免库存积压。</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section">
     <h2>Part 3 — 问题诊断与业务机会深度分析</h2>
     <p style="color:#718096;margin-bottom:16px;font-size:13px;">基于2026年春夏发货数据（对比2025年春夏发货数据），从8个业务维度提取可落地的 actionable insights</p>
 
@@ -517,7 +595,36 @@ c20.setOption({
 });
 
 window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20].forEach(function(c){c.resize();});
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22].forEach(function(c){c.resize();});
+});
+
+// Sell-through charts
+var c21 = echarts.init(document.getElementById('chart_st_cat'));
+c21.setOption({
+    title:{text:'品类售罄率同比 (%)',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:["短袖T", "长裤", "短裤", "外套", "长袖T", "背心", "七分裤", "帽子"],axisLabel:{rotate:30}},
+    yAxis:{type:'value',name:'%',max:100},
+    series:[
+        {name:'2025',type:'bar',data:[61.5, 59.4, 47.0, 40.1, 37.2, 47.7, 38.5, 0],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[47.2, 46.5, 46.9, 32.7, 51.2, 37.8, 67.1, 20.9],itemStyle:{color:'#667eea'}}
+    ]
+});
+
+var c22 = echarts.init(document.getElementById('chart_st_dist'));
+c22.setOption({
+    title:{text:'售罄率分布对比 (%)',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:['2025','2026'],bottom:0},
+    xAxis:{type:'category',data:['>80% 畅销','50-80% 健康','30-50% 关注','<30% 滞销']},
+    yAxis:{type:'value',name:'%',max:50},
+    series:[
+        {name:'2025',type:'bar',data:[22.9,40.3,23.5,13.3],itemStyle:{color:'#a0aec0'}},
+        {name:'2026',type:'bar',data:[24.6,24.8,18.2,32.4],itemStyle:{
+            color:function(params){return params.dataIndex==3?'#fc8181':'#667eea';}
+        }}
+    ]
 });
 </script>
 </body>
