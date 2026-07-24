@@ -282,28 +282,129 @@ tr:hover td { background:#e8f0ff; }
         </p>
     </div>
 
-    <h3>1.6 国外国家销售分布</h3>
-    <div class="chart-box"><div id="chart_fw_country" class="chart" style="height:450px;"></div></div>
-    <div class="table-wrap">
-        <table>
-            <tr><th class="txt-l">国家</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th><th class="txt-r">净毛利率</th></tr>
-<tr><td>美国</td><td class="num">¥554,569</td><td class="num">69.6%</td><td class="num">13,947</td><td class="num">5.5%</td><td class="num">94.7%</td></tr><tr><td>英国</td><td class="num">¥41,075</td><td class="num">5.2%</td><td class="num">764</td><td class="num">4.2%</td><td class="num">95.3%</td></tr><tr><td>加拿大</td><td class="num">¥38,419</td><td class="num">4.8%</td><td class="num">844</td><td class="num">0.2%</td><td class="num">99.7%</td></tr><tr><td>瑞典</td><td class="num">¥34,462</td><td class="num">4.3%</td><td class="num">917</td><td class="num">0.7%</td><td class="num">99.5%</td></tr><tr><td>日本</td><td class="num">¥24,386</td><td class="num">3.1%</td><td class="num">387</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>澳大利亚</td><td class="num">¥23,463</td><td class="num">2.9%</td><td class="num">593</td><td class="num">2.2%</td><td class="num">97.6%</td></tr><tr><td>意大利</td><td class="num">¥17,725</td><td class="num">2.2%</td><td class="num">482</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>法国</td><td class="num">¥14,510</td><td class="num">1.8%</td><td class="num">331</td><td class="num">3.9%</td><td class="num">97.9%</td></tr><tr><td>德国</td><td class="num">¥13,428</td><td class="num">1.7%</td><td class="num">259</td><td class="num">0.8%</td><td class="num">99.6%</td></tr><tr><td>俄罗斯</td><td class="num">¥4,114</td><td class="num">0.5%</td><td class="num">118</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>瑞士</td><td class="num">¥4,081</td><td class="num">0.5%</td><td class="num">102</td><td class="num">11.8%</td><td class="num">86.5%</td></tr><tr><td>墨西哥</td><td class="num">¥3,438</td><td class="num">0.4%</td><td class="num">127</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>西班牙</td><td class="num">¥3,320</td><td class="num">0.4%</td><td class="num">87</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>荷兰</td><td class="num">¥2,247</td><td class="num">0.3%</td><td class="num">58</td><td class="num">10.3%</td><td class="num">96.1%</td></tr><tr><td>波兰</td><td class="num">¥2,093</td><td class="num">0.3%</td><td class="num">84</td><td class="num">1.2%</td><td class="num">97.6%</td></tr><tr><td>泰国</td><td class="num">¥2,022</td><td class="num">0.3%</td><td class="num">151</td><td class="num">6.6%</td><td class="num">92.6%</td></tr><tr><td>新西兰</td><td class="num">¥1,959</td><td class="num">0.2%</td><td class="num">39</td><td class="num">2.6%</td><td class="num">98.5%</td></tr><tr><td>韩国</td><td class="num">¥1,787</td><td class="num">0.2%</td><td class="num">138</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>新加坡</td><td class="num">¥973</td><td class="num">0.1%</td><td class="num">50</td><td class="num">0.0%</td><td class="num">100.0%</td></tr><tr><td>奥地利</td><td class="num">¥886</td><td class="num">0.1%</td><td class="num">17</td><td class="num">0.0%</td><td class="num">100.0%</td></tr>
-        </table>
+    <h3>1.6 海外市场总览</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+        <div class="kpi-card">
+            <div class="label">国外销售占比</div>
+            <div class="value">4.4%</div>
+            <div class="change neutral">国内占比 95.6%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">国外平均毛利率</div>
+            <div class="value">95.8%</div>
+            <div class="change down">国内约60%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">国外平均退货率</div>
+            <div class="value">4.4%</div>
+            <div class="change down">国内 17.9%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="label">美国占国外比例</div>
+            <div class="value">69.6%</div>
+            <div class="change neutral">最大单一市场</div>
+        </div>
     </div>
 
-    <h3>1.7 国外按价格带拆解</h3>
     <div class="chart-row">
-        <div class="chart-box"><div id="chart_fw_price" class="chart"></div></div>
-        <div class="chart-box"><div id="chart_fw_country_price" class="chart" style="height:450px;"></div></div>
+        <div class="chart-box">
+            <h4 style="margin-bottom:10px;">国外TOP10国家销售</h4>
+            <div id="chart_fw_country" class="chart" style="height:400px;"></div>
+        </div>
+        <div class="chart-box">
+            <h4 style="margin-bottom:10px;">国外价格带分布</h4>
+            <div id="chart_fw_price" class="chart" style="height:400px;"></div>
+        </div>
     </div>
+
     <div class="table-wrap">
         <table>
-            <tr><th class="txt-l">国家</th><th class="txt-l">价格带</th><th class="txt-r">销售金额</th><th class="txt-r">销售数量</th></tr>
-<tr><td>美国</td><td>50-100</td><td class="num">¥333,948</td><td class="num">8,773</td></tr><tr><td>美国</td><td>100-200</td><td class="num">¥141,097</td><td class="num">3,051</td></tr><tr><td>美国</td><td>200-500</td><td class="num">¥62,707</td><td class="num">1,348</td></tr><tr><td>瑞典</td><td>0-50</td><td class="num">¥26,762</td><td class="num">781</td></tr><tr><td>英国</td><td>50-100</td><td class="num">¥23,662</td><td class="num">374</td></tr><tr><td>加拿大</td><td>50-100</td><td class="num">¥21,200</td><td class="num">489</td></tr><tr><td>美国</td><td>0-50</td><td class="num">¥16,547</td><td class="num">770</td></tr><tr><td>澳大利亚</td><td>50-100</td><td class="num">¥14,108</td><td class="num">344</td></tr><tr><td>加拿大</td><td>100-200</td><td class="num">¥13,041</td><td class="num">231</td></tr><tr><td>日本</td><td>100-200</td><td class="num">¥12,777</td><td class="num">100</td></tr><tr><td>英国</td><td>100-200</td><td class="num">¥10,583</td><td class="num">135</td></tr><tr><td>意大利</td><td>0-50</td><td class="num">¥9,557</td><td class="num">310</td></tr><tr><td>日本</td><td>50-100</td><td class="num">¥9,220</td><td class="num">136</td></tr><tr><td>瑞典</td><td>50-100</td><td class="num">¥7,650</td><td class="num">135</td></tr><tr><td>法国</td><td>50-100</td><td class="num">¥7,270</td><td class="num">170</td></tr><tr><td>德国</td><td>50-100</td><td class="num">¥6,264</td><td class="num">143</td></tr><tr><td>德国</td><td>100-200</td><td class="num">¥5,551</td><td class="num">88</td></tr><tr><td>澳大利亚</td><td>100-200</td><td class="num">¥5,430</td><td class="num">107</td></tr><tr><td>英国</td><td>0-50</td><td class="num">¥5,058</td><td class="num">236</td></tr><tr><td>法国</td><td>100-200</td><td class="num">¥4,623</td><td class="num">90</td></tr><tr><td>俄罗斯</td><td>0-50</td><td class="num">¥4,075</td><td class="num">117</td></tr><tr><td>意大利</td><td>50-100</td><td class="num">¥3,306</td><td class="num">85</td></tr><tr><td>意大利</td><td>100-200</td><td class="num">¥2,939</td><td class="num">55</td></tr><tr><td>澳大利亚</td><td>0-50</td><td class="num">¥2,759</td><td class="num">122</td></tr><tr><td>加拿大</td><td>200-500</td><td class="num">¥2,445</td><td class="num">32</td></tr><tr><td>意大利</td><td>200-500</td><td class="num">¥1,924</td><td class="num">32</td></tr><tr><td>瑞士</td><td>100-200</td><td class="num">¥1,827</td><td class="num">30</td></tr><tr><td>墨西哥</td><td>50-100</td><td class="num">¥1,745</td><td class="num">34</td></tr><tr><td>加拿大</td><td>0-50</td><td class="num">¥1,734</td><td class="num">92</td></tr><tr><td>英国</td><td>200-500</td><td class="num">¥1,713</td><td class="num">18</td></tr>
+            <tr><th class="txt-l">国家</th><th class="txt-r">销售金额</th><th class="txt-r">占比(国外)</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th><th class="txt-r">毛利率</th></tr>
+<tr>
+        <td>美国</td>
+        <td class="num">¥554,569</td>
+        <td class="num">69.6%</td>
+        <td class="num">13,947</td>
+        <td class="num">5.5%</td>
+        <td class="num">94.7%</td>
+    </tr><tr>
+        <td>英国</td>
+        <td class="num">¥41,075</td>
+        <td class="num">5.2%</td>
+        <td class="num">764</td>
+        <td class="num">4.2%</td>
+        <td class="num">95.3%</td>
+    </tr><tr>
+        <td>加拿大</td>
+        <td class="num">¥38,419</td>
+        <td class="num">4.8%</td>
+        <td class="num">844</td>
+        <td class="num">0.2%</td>
+        <td class="num">99.7%</td>
+    </tr><tr>
+        <td>瑞典</td>
+        <td class="num">¥34,462</td>
+        <td class="num">4.3%</td>
+        <td class="num">917</td>
+        <td class="num">0.7%</td>
+        <td class="num">99.5%</td>
+    </tr><tr>
+        <td>日本</td>
+        <td class="num">¥24,386</td>
+        <td class="num">3.1%</td>
+        <td class="num">387</td>
+        <td class="num">0.0%</td>
+        <td class="num">100.0%</td>
+    </tr><tr>
+        <td>澳大利亚</td>
+        <td class="num">¥23,463</td>
+        <td class="num">2.9%</td>
+        <td class="num">593</td>
+        <td class="num">2.2%</td>
+        <td class="num">97.6%</td>
+    </tr><tr>
+        <td>意大利</td>
+        <td class="num">¥17,725</td>
+        <td class="num">2.2%</td>
+        <td class="num">482</td>
+        <td class="num">0.0%</td>
+        <td class="num">100.0%</td>
+    </tr><tr>
+        <td>法国</td>
+        <td class="num">¥14,510</td>
+        <td class="num">1.8%</td>
+        <td class="num">331</td>
+        <td class="num">3.9%</td>
+        <td class="num">97.9%</td>
+    </tr><tr>
+        <td>德国</td>
+        <td class="num">¥13,428</td>
+        <td class="num">1.7%</td>
+        <td class="num">259</td>
+        <td class="num">0.8%</td>
+        <td class="num">99.6%</td>
+    </tr><tr>
+        <td>俄罗斯</td>
+        <td class="num">¥4,114</td>
+        <td class="num">0.5%</td>
+        <td class="num">118</td>
+        <td class="num">0.0%</td>
+        <td class="num">100.0%</td>
+    </tr>
         </table>
     </div>
 
-    <h3>1.8 爆款/滞销款特征</h3>
+    <div class="insight-box" style="margin:12px 0;">
+        <h4>海外市场核心结论</h4>
+        <ul>
+            <li><b>高毛利低退货的战略蓝海：</b>国外仅占4.4%销售但毛利率高达95.8%，退货率仅4.4%，与国内（毛利率~60%、退货率17.9%）形成鲜明对比。每1元国外销售的毛利是国内1.5倍以上。</li>
+            <li><b>美国一家独大：</b>美国占国外69.6%，是绝对主导市场；英国、加拿大、澳大利亚、瑞典合计占约15%，是第二梯队。</li>
+            <li><b>价格带偏好差异：</b>国外100-200元价格带占比显著高于国内，说明海外消费者对品质款接受度更高，可定向投放中高价格带产品测试溢价空间。</li>
+            <li><b>行动建议：</b>① 配置1名海外运营专员主攻美国市场；② 为美国单独备货TOP 20%爆款，小批量高频发货；③ 向英国/加拿大定向投放100-200元产品测试高客单接受度。</li>
+        </ul>
+    </div>
+
+    <h3>1.7 爆款/滞销款特征</h3>
     <div class="chart-row">
         <div class="chart-box">
             <h4 style="margin-bottom:10px;">TOP 20 爆款（按销售金额）</h4>
@@ -600,27 +701,13 @@ c11.setOption({
 
 var c12 = echarts.init(document.getElementById('chart_fw_price'));
 c12.setOption({
-    title:{text:'国外价格带销售金额',left:'center'},
-    tooltip:{trigger:'axis'},
-    xAxis:{type:'category',data:["50-100", "100-200", "0-50", "200-500", "500+"]},
-    yAxis:{type:'value',name:'元'},
-    series:[{type:'bar',data:[440422.86, 203809.22, 77786.56, 74344.38, 329.61],itemStyle:{color:'#ed8936'}}]
-});
-
-var c13 = echarts.init(document.getElementById('chart_fw_country_price'));
-c13.setOption({
-    title:{text:'国外国家×价格带销售金额',left:'center'},
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-    legend:{data:["0-50", "50-100", "100-200", "200-500", "500+"],bottom:0},
-    xAxis:{type:'category',data:["加拿大", "德国", "意大利", "日本", "法国", "澳大利亚", "瑞典", "美国", "英国"],axisLabel:{rotate:30}},
-    yAxis:{type:'value',name:'元'},
-    series:[
-        {name:'0-50',type:'bar',stack:'total',data:[1734.03, 314.76, 9556.8, 1548.34, 1626.96, 2758.87, 26762.0, 16546.84, 5058.23],itemStyle:{color:'#a0aec0'}},
-        {name:'50-100',type:'bar',stack:'total',data:[21200.0, 6264.31, 3306.12, 9220.33, 7270.32, 14107.64, 7650.21, 333948.2, 23661.76],itemStyle:{color:'#4299e1'}},
-        {name:'100-200',type:'bar',stack:'total',data:[13040.56, 5550.7, 2938.53, 12776.87, 4622.78, 5430.48, 49.99, 141097.11, 10582.63],itemStyle:{color:'#667eea'}},
-        {name:'200-500',type:'bar',stack:'total',data:[2444.84, 1297.78, 1923.96, 840.46, 989.55, 1165.83, 0, 62706.86, 1712.66],itemStyle:{color:'#ed8936'}},
-        {name:'500+',type:'bar',stack:'total',data:[0, 0, 0, 0, 0, 0, 0, 269.62, 59.99],itemStyle:{color:'#e53e3e'}}
-    ]
+    title:{text:'国外价格带销售占比',left:'center'},
+    tooltip:{trigger:'item',formatter:'{b}: ¥{c} ({d}%)'},
+    series:[{type:'pie',radius:['40%','70%'],
+        data:[{"name": "50-100", "value": 440422.86}, {"name": "100-200", "value": 203809.22}, {"name": "0-50", "value": 77786.56}, {"name": "200-500", "value": 74344.38}, {"name": "500+", "value": 329.61}],
+        label:{formatter:'{b}
+{d}%'}
+    }]
 });
 
 var c14 = echarts.init(document.getElementById('chart_top20'));
@@ -723,7 +810,7 @@ c20.setOption({
 });
 
 window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
 });
 
 // Enhanced charts
