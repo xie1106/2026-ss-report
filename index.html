@@ -158,6 +158,58 @@ tr:hover td { background:#e8f0ff; }
         </table>
     </div>
 
+    <h3>1.6 温度带与发货节奏参考</h3>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_temp_curve" class="chart" style="height:380px;"></div></div>
+        <div class="chart-box">
+            <div style="padding:12px;">
+                <h4 style="margin-bottom:12px;color:#4a5568;font-size:15px;">温度带备货策略</h4>
+                <table style="font-size:12px;">
+                    <tr><th style="background:#5B7FF7;color:white;padding:8px;text-align:left;">温度带</th><th style="background:#5B7FF7;color:white;padding:8px;">代表省份</th><th style="background:#5B7FF7;color:white;padding:8px;">入夏月份</th><th style="background:#5B7FF7;color:white;padding:8px;text-align:left;">品类配比建议</th></tr>
+
+                    <tr>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#e53e3e;margin-right:4px;"></span>热带/亚热带</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">广东、广西</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">提前2周（2月中旬）</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;">3月可全品夏装，短袖T 65%、短裤20%、背心10%</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#dd6b20;margin-right:4px;"></span>温暖带</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">浙江、江苏、福建、上海等13省</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">提前3周（2月底）</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;">3-4月过渡期需长袖，5-6月全夏装。短袖T 50%、长袖T 15%、短裤15%</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4299e1;margin-right:4px;"></span>温带</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">山东、北京、河北、山西</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">提前4周（2月初）</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;">过渡期更长，外套需求延续到4月。短袖T 40%、外套15%、长裤20%</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#667eea;margin-right:4px;"></span>寒温带</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">辽宁</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;text-align:center;">4月中旬启动夏装</td>
+                        <td style="padding:6px 8px;border:1px solid #e8ecf0;">夏装窗口仅5-6月，前期以长袖T+外套为主。短袖T 35%、外套20%、长裤25%</td>
+                    </tr>
+
+                </table>
+                <div style="margin-top:12px;padding:10px;background:#f0fff4;border-left:3px solid #38a169;border-radius:0 6px 6px 0;font-size:12px;color:#22543d;">
+                    <b>核心原则：</b>按温度带分组备货，而非逐省单独判断。热带/亚热带省份2月中旬即可全面铺夏装，寒温带省份4月中旬才启动夏装发货，提前量差异达2个月。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <tr><th class="txt-l">省份</th><th class="txt-r">销售占比</th><th class="txt-r">退货率</th><th class="txt-l">温度带</th><th class="txt-r">1-6月均温</th><th class="txt-r">入夏月份</th><th class="txt-r">1月</th><th class="txt-r">2月</th><th class="txt-r">3月</th><th class="txt-r">4月</th><th class="txt-r">5月</th><th class="txt-r">6月</th></tr>
+<tr><td>广东</td><td class="num">37.3%</td><td class="num">13.6%</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">热带/亚热带</span></td><td class="num">21.7°C</td><td class="num">4月</td><td class="num">14.8°</td><td class="num">16.5°</td><td class="num">19.4°</td><td class="num">23.5°</td><td class="num">27.0°</td><td class="num">28.8°</td></tr><tr><td>浙江</td><td class="num">12.2%</td><td class="num">19.4%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">15.6°C</td><td class="num">5月</td><td class="num">6.0°</td><td class="num">8.2°</td><td class="num">12.2°</td><td class="num">18.0°</td><td class="num">23.0°</td><td class="num">26.0°</td></tr><tr><td>江苏</td><td class="num">5.2%</td><td class="num">25.6%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">14.6°C</td><td class="num">5月</td><td class="num">4.2°</td><td class="num">6.7°</td><td class="num">11.2°</td><td class="num">17.2°</td><td class="num">22.5°</td><td class="num">26.0°</td></tr><tr><td>福建</td><td class="num">4.7%</td><td class="num">22.2%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">18.9°C</td><td class="num">5月</td><td class="num">12.4°</td><td class="num">13.2°</td><td class="num">15.5°</td><td class="num">20.1°</td><td class="num">24.2°</td><td class="num">27.7°</td></tr><tr><td>上海</td><td class="num">4.4%</td><td class="num">21.6%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">14.8°C</td><td class="num">5月</td><td class="num">5.9°</td><td class="num">7.6°</td><td class="num">11.3°</td><td class="num">16.7°</td><td class="num">22.0°</td><td class="num">25.4°</td></tr><tr><td>四川</td><td class="num">4.3%</td><td class="num">18.8%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">15.8°C</td><td class="num">5月</td><td class="num">6.7°</td><td class="num">9.3°</td><td class="num">13.3°</td><td class="num">18.4°</td><td class="num">22.4°</td><td class="num">25.0°</td></tr><tr><td>山东</td><td class="num">4.2%</td><td class="num">15.1%</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">温带</span></td><td class="num">13.9°C</td><td class="num">5月</td><td class="num">0.9°</td><td class="num">4.4°</td><td class="num">10.3°</td><td class="num">17.3°</td><td class="num">23.1°</td><td class="num">27.5°</td></tr><tr><td>北京</td><td class="num">3.2%</td><td class="num">27.5%</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">温带</span></td><td class="num">12.2°C</td><td class="num">5月</td><td class="num">-1.7°</td><td class="num">1.7°</td><td class="num">8.5°</td><td class="num">16.1°</td><td class="num">22.2°</td><td class="num">26.3°</td></tr><tr><td>湖南</td><td class="num">2.6%</td><td class="num">18.9%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">16.2°C</td><td class="num">5月</td><td class="num">6.2°</td><td class="num">8.9°</td><td class="num">12.9°</td><td class="num">18.8°</td><td class="num">23.5°</td><td class="num">27.0°</td></tr><tr><td>江西</td><td class="num">2.5%</td><td class="num">12.1%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">16.8°C</td><td class="num">5月</td><td class="num">7.0°</td><td class="num">9.5°</td><td class="num">13.3°</td><td class="num">19.3°</td><td class="num">24.3°</td><td class="num">27.2°</td></tr><tr><td>湖北</td><td class="num">1.9%</td><td class="num">27.6%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">15.9°C</td><td class="num">5月</td><td class="num">5.1°</td><td class="num">8.1°</td><td class="num">12.6°</td><td class="num">18.7°</td><td class="num">23.7°</td><td class="num">27.3°</td></tr><tr><td>河南</td><td class="num">1.7%</td><td class="num">28.3%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">14.4°C</td><td class="num">5月</td><td class="num">2.0°</td><td class="num">5.4°</td><td class="num">11.1°</td><td class="num">17.6°</td><td class="num">23.3°</td><td class="num">27.1°</td></tr><tr><td>重庆</td><td class="num">1.7%</td><td class="num">20.6%</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">温暖带</span></td><td class="num">17.1°C</td><td class="num">5月</td><td class="num">8.0°</td><td class="num">10.5°</td><td class="num">14.5°</td><td class="num">19.5°</td><td class="num">23.5°</td><td class="num">26.5°</td></tr><tr><td>广西</td><td class="num">1.7%</td><td class="num">21.9%</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">热带/亚热带</span></td><td class="num">21.4°C</td><td class="num">4月</td><td class="num">13.8°</td><td class="num">15.9°</td><td class="num">18.8°</td><td class="num">23.7°</td><td class="num">27.1°</td><td class="num">28.8°</td></tr><tr><td>河北</td><td class="num">1.6%</td><td class="num">23.8%</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">温带</span></td><td class="num">13.4°C</td><td class="num">5月</td><td class="num">-0.3°</td><td class="num">3.4°</td><td class="num">10.0°</td><td class="num">17.0°</td><td class="num">23.0°</td><td class="num">27.4°</td></tr>
+        </table>
+    </div>
+
     <h3>1.7 国外国家销售分布</h3>
     <div class="chart-box"><div id="chart_fw_country" class="chart" style="height:450px;"></div></div>
     <div class="table-wrap">
@@ -451,6 +503,18 @@ c9.setOption({
     }]
 });
 
+var c10 = echarts.init(document.getElementById('chart_temp_curve'));
+c10.setOption({
+    title:{text:'TOP5销售省份月均温度曲线（1-6月）',left:'center'},
+    tooltip:{trigger:'axis'},
+    legend:{data:["广东", "浙江", "江苏", "福建", "上海"],bottom:0},
+    grid:{left:'8%',right:'5%',top:'15%',bottom:'18%'},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月']},
+    yAxis:{type:'value',name:'°C',min:-15},
+    series:[{"name": "广东", "type": "line", "smooth": true, "data": [14.8, 16.5, 19.4, 23.5, 27.0, 28.8], "lineStyle": {"color": "#e53e3e", "width": 2}, "itemStyle": {"color": "#e53e3e"}, "symbol": "circle", "symbolSize": 6}, {"name": "浙江", "type": "line", "smooth": true, "data": [6.0, 8.2, 12.2, 18.0, 23.0, 26.0], "lineStyle": {"color": "#4299e1", "width": 2}, "itemStyle": {"color": "#4299e1"}, "symbol": "circle", "symbolSize": 6}, {"name": "江苏", "type": "line", "smooth": true, "data": [4.2, 6.7, 11.2, 17.2, 22.5, 26.0], "lineStyle": {"color": "#38a169", "width": 2}, "itemStyle": {"color": "#38a169"}, "symbol": "circle", "symbolSize": 6}, {"name": "福建", "type": "line", "smooth": true, "data": [12.4, 13.2, 15.5, 20.1, 24.2, 27.7], "lineStyle": {"color": "#dd6b20", "width": 2}, "itemStyle": {"color": "#dd6b20"}, "symbol": "circle", "symbolSize": 6}, {"name": "上海", "type": "line", "smooth": true, "data": [5.9, 7.6, 11.3, 16.7, 22.0, 25.4], "lineStyle": {"color": "#667eea", "width": 2}, "itemStyle": {"color": "#667eea"}, "symbol": "circle", "symbolSize": 6}],
+    markLine:{data:[{yAxis:22,lineStyle:{type:'dashed',color:'#e53e3e'},label:{formatter:'入夏线22°C'}}]}
+});
+
 var c11 = echarts.init(document.getElementById('chart_fw_country'));
 c11.setOption({
     title:{text:'国外国家销售金额TOP15',left:'center'},
@@ -585,7 +649,7 @@ c20.setOption({
 });
 
 window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26].forEach(function(c){c.resize();});
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
 });
 
 // Enhanced charts
