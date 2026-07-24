@@ -808,10 +808,6 @@ c20.setOption({
     ]
 });
 
-window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
-});
-
 // Enhanced charts
 var c23 = echarts.init(document.getElementById('chart_size'));
 c23.setOption({
@@ -884,6 +880,10 @@ c22.setOption({
             color:function(params){return params.dataIndex==3?'#fc8181':'#667eea';}
         }}
     ]
+});
+
+window.addEventListener('resize',function(){
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26].forEach(function(c){if(c)c.resize();});
 });
 </script>
 </body>
