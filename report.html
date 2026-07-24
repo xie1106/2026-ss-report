@@ -458,7 +458,7 @@ tr:hover td { background:#e8f0ff; }
     <div class="table-wrap">
         <table>
             <tr><th class="txt-l">尺码</th><th class="txt-r">销售数量</th><th class="txt-r">销售占比</th><th class="txt-r">退货率</th></tr>
-<tr><td>L</td><td class="num">117,159</td><td class="num">30.5%</td><td class="num">18.3%</td></tr><tr><td>M</td><td class="num">105,195</td><td class="num">27.4%</td><td class="num">18.0%</td></tr><tr><td>XL</td><td class="num">83,519</td><td class="num">21.7%</td><td class="num">17.7%</td></tr><tr><td>S</td><td class="num">46,018</td><td class="num">12.0%</td><td class="num">17.8%</td></tr><tr><td>XXL</td><td class="num">23,034</td><td class="num">6.0%</td><td class="num">15.8%</td></tr><tr><td>XS</td><td class="num">2,862</td><td class="num">0.7%</td><td class="num">15.1%</td></tr><tr><td>XXXL</td><td class="num">2,340</td><td class="num">0.6%</td><td class="num">9.4%</td></tr><tr><td>30</td><td class="num">947</td><td class="num">0.2%</td><td class="num">18.5%</td></tr><tr><td>28</td><td class="num">872</td><td class="num">0.2%</td><td class="num">16.4%</td></tr><tr><td>32</td><td class="num">831</td><td class="num">0.2%</td><td class="num">17.6%</td></tr><tr><td>34</td><td class="num">647</td><td class="num">0.2%</td><td class="num">16.8%</td></tr><tr><td>F</td><td class="num">473</td><td class="num">0.1%</td><td class="num">26.8%</td></tr><tr><td>26</td><td class="num">334</td><td class="num">0.1%</td><td class="num">24.3%</td></tr><tr><td>36</td><td class="num">181</td><td class="num">0.0%</td><td class="num">27.1%</td></tr><tr><td>2XL</td><td class="num">2</td><td class="num">0.0%</td><td class="num">0.0%</td></tr>
+<tr><td>XS/26</td><td class="num">3,196</td><td class="num">0.8%</td><td class="num">16.1%</td></tr><tr><td>S/28</td><td class="num">46,890</td><td class="num">12.2%</td><td class="num">17.8%</td></tr><tr><td>M/30</td><td class="num">106,142</td><td class="num">27.6%</td><td class="num">18.0%</td></tr><tr><td>L/32</td><td class="num">117,990</td><td class="num">30.7%</td><td class="num">18.3%</td></tr><tr><td>XL/34</td><td class="num">84,166</td><td class="num">21.9%</td><td class="num">17.7%</td></tr><tr><td>XXL/36</td><td class="num">23,217</td><td class="num">6.0%</td><td class="num">15.8%</td></tr><tr><td>XXXL</td><td class="num">2,340</td><td class="num">0.6%</td><td class="num">9.4%</td></tr><tr><td>F</td><td class="num">473</td><td class="num">0.1%</td><td class="num">26.8%</td></tr>
         </table>
     </div>
 
@@ -849,18 +849,18 @@ var c16 = echarts.init(document.getElementById('chart_size'));
 c16.setOption({
     title:{text:'尺码销售数量',left:'center'},
     tooltip:{trigger:'axis'},
-    xAxis:{type:'category',data:["L", "M", "XL", "S", "XXL", "XS", "XXXL", "30", "28", "32", "34", "F", "26", "36", "2XL"]},
+    xAxis:{type:'category',data:["XS/26", "S/28", "M/30", "L/32", "XL/34", "XXL/36", "XXXL", "F"]},
     yAxis:{type:'value',name:'件'},
-    series:[{type:'bar',data:[117159.0, 105195.0, 83519.0, 46018.0, 23034.0, 2862.0, 2340.0, 947.0, 872.0, 831.0, 647.0, 473.0, 334.0, 181.0, 2.0],itemStyle:{color:'#4299e1'}}]
+    series:[{type:'bar',data:[3196.0, 46890.0, 106142.0, 117990.0, 84166.0, 23217.0, 2340.0, 473.0],itemStyle:{color:'#4299e1'}}]
 });
 
 var c17 = echarts.init(document.getElementById('chart_size_return'));
 c17.setOption({
     title:{text:'尺码退货率%',left:'center'},
     tooltip:{trigger:'axis'},
-    xAxis:{type:'category',data:["L", "M", "XL", "S", "XXL", "XS", "XXXL", "30", "28", "32", "34", "F", "26", "36", "2XL"]},
+    xAxis:{type:'category',data:["XS/26", "S/28", "M/30", "L/32", "XL/34", "XXL/36", "XXXL", "F"]},
     yAxis:{type:'value',name:'%'},
-    series:[{type:'bar',data:[18.3, 18.0, 17.7, 17.8, 15.8, 15.1, 9.4, 18.5, 16.4, 17.6, 16.8, 26.8, 24.3, 27.1, 0.0],itemStyle:{color:'#fc8181'}}]
+    series:[{type:'bar',data:[16.1, 17.8, 18.0, 18.3, 17.7, 15.8, 9.4, 26.8],itemStyle:{color:'#fc8181'}}]
 });
 
 // 1.9 Dead Stock
