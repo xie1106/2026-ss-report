@@ -134,21 +134,27 @@ tr:hover td { background:#e8f0ff; }
         <div class="chart-box"><div id="chart_fabric_margin" class="chart"></div></div>
     </div>
 
-    <h3>1.5 国内省份销售分布</h3>
-    <div class="chart-box"><div id="chart_cn_province" class="chart" style="height:450px;"></div></div>
-    <div class="table-wrap">
-        <table>
-            <tr><th class="txt-l">省份</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th><th class="txt-r">净毛利率</th></tr>
-<tr><td>广东</td><td class="num">¥6,642,868</td><td class="num">37.3%</td><td class="num">136,674</td><td class="num">13.6%</td><td class="num">86.0%</td></tr><tr><td>浙江</td><td class="num">¥2,179,503</td><td class="num">12.2%</td><td class="num">44,249</td><td class="num">19.4%</td><td class="num">78.4%</td></tr><tr><td>江苏</td><td class="num">¥917,873</td><td class="num">5.2%</td><td class="num">17,889</td><td class="num">25.6%</td><td class="num">72.8%</td></tr><tr><td>福建</td><td class="num">¥833,468</td><td class="num">4.7%</td><td class="num">17,601</td><td class="num">22.2%</td><td class="num">75.0%</td></tr><tr><td>上海</td><td class="num">¥777,649</td><td class="num">4.4%</td><td class="num">15,731</td><td class="num">21.6%</td><td class="num">77.2%</td></tr><tr><td>四川</td><td class="num">¥758,714</td><td class="num">4.3%</td><td class="num">15,178</td><td class="num">18.8%</td><td class="num">80.6%</td></tr><tr><td>山东</td><td class="num">¥749,100</td><td class="num">4.2%</td><td class="num">15,747</td><td class="num">15.1%</td><td class="num">83.3%</td></tr><tr><td>北京</td><td class="num">¥568,239</td><td class="num">3.2%</td><td class="num">11,725</td><td class="num">27.5%</td><td class="num">69.2%</td></tr><tr><td>湖南</td><td class="num">¥457,312</td><td class="num">2.6%</td><td class="num">9,851</td><td class="num">18.9%</td><td class="num">79.0%</td></tr><tr><td>江西</td><td class="num">¥441,892</td><td class="num">2.5%</td><td class="num">8,070</td><td class="num">12.1%</td><td class="num">88.7%</td></tr><tr><td>湖北</td><td class="num">¥345,648</td><td class="num">1.9%</td><td class="num">7,078</td><td class="num">27.6%</td><td class="num">70.3%</td></tr><tr><td>河南</td><td class="num">¥309,243</td><td class="num">1.7%</td><td class="num">6,327</td><td class="num">28.3%</td><td class="num">69.2%</td></tr><tr><td>重庆</td><td class="num">¥300,934</td><td class="num">1.7%</td><td class="num">6,333</td><td class="num">20.6%</td><td class="num">77.4%</td></tr><tr><td>广西</td><td class="num">¥297,602</td><td class="num">1.7%</td><td class="num">5,747</td><td class="num">21.9%</td><td class="num">78.6%</td></tr><tr><td>河北</td><td class="num">¥277,696</td><td class="num">1.6%</td><td class="num">5,464</td><td class="num">23.8%</td><td class="num">73.5%</td></tr><tr><td>辽宁</td><td class="num">¥271,289</td><td class="num">1.5%</td><td class="num">5,527</td><td class="num">23.0%</td><td class="num">73.9%</td></tr><tr><td>安徽</td><td class="num">¥265,164</td><td class="num">1.5%</td><td class="num">5,352</td><td class="num">31.9%</td><td class="num">69.1%</td></tr><tr><td>陕西</td><td class="num">¥264,933</td><td class="num">1.5%</td><td class="num">5,077</td><td class="num">31.4%</td><td class="num">66.7%</td></tr><tr><td>云南</td><td class="num">¥191,421</td><td class="num">1.1%</td><td class="num">3,642</td><td class="num">20.2%</td><td class="num">78.8%</td></tr><tr><td>山西</td><td class="num">¥150,401</td><td class="num">0.8%</td><td class="num">2,780</td><td class="num">22.3%</td><td class="num">76.5%</td></tr>
-        </table>
+    <h3>1.5 区域效率分析</h3>
+    <div class="chart-box"><div id="chart_region_matrix" class="chart" style="height:480px;"></div></div>
+    <div style="display:flex;gap:16px;margin:12px 0;flex-wrap:wrap;font-size:12px;">
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#38a169;display:inline-block;"></span>金牛区（高销售+低退货）</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4299e1;display:inline-block;"></span>潜力区（低销售+低退货）</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#e53e3e;display:inline-block;"></span>低效区（低销售+高退货）</div>
     </div>
 
-    <h3>1.6 国内城市TOP20</h3>
-    <div class="chart-box"><div id="chart_cn_city" class="chart" style="height:500px;"></div></div>
+    <div class="insight-box" style="margin:12px 0;">
+        <h4>区域效率诊断</h4>
+        <ul>
+            <li><b>金牛区（2省）：</b>广东、浙江等销售占比≥5%且退货率≤20%，是核心粮仓，需确保爆款不断货。</li>
+            <li><b>低效区（13省）：</b>福建、上海、北京、湖北、河南等销售占比低但退货率>20%，建议减少备货、转预售模式，并排查退货根因（尺码/物流/详情页）。</li>
+            <li><b>潜力区（4省）：</b>退货控制良好但销售占比<5%，可通过加大投放和本地化运营挖掘增量。</li>
+        </ul>
+    </div>
+
     <div class="table-wrap">
         <table>
-            <tr><th class="txt-l">省份</th><th class="txt-l">城市</th><th class="txt-r">销售金额</th><th class="txt-r">销售占比</th><th class="txt-r">销售数量</th><th class="txt-r">退货率</th></tr>
-<tr><td>广东</td><td>广州市</td><td class="num">¥2,903,815</td><td class="num">16.3%</td><td class="num">61,469</td><td class="num">10.8%</td></tr><tr><td>浙江</td><td>杭州市</td><td class="num">¥955,690</td><td class="num">5.4%</td><td class="num">18,471</td><td class="num">24.2%</td></tr><tr><td>广东</td><td>深圳市</td><td class="num">¥835,799</td><td class="num">4.7%</td><td class="num">16,819</td><td class="num">26.0%</td></tr><tr><td>广东</td><td>佛山市</td><td class="num">¥820,192</td><td class="num">4.6%</td><td class="num">17,383</td><td class="num">12.0%</td></tr><tr><td>上海</td><td>上海市</td><td class="num">¥777,157</td><td class="num">4.4%</td><td class="num">15,718</td><td class="num">21.6%</td></tr><tr><td>广东</td><td>江门市</td><td class="num">¥718,580</td><td class="num">4.0%</td><td class="num">13,724</td><td class="num">4.4%</td></tr><tr><td>四川</td><td>成都市</td><td class="num">¥568,897</td><td class="num">3.2%</td><td class="num">11,132</td><td class="num">18.9%</td></tr><tr><td>北京</td><td>北京市</td><td class="num">¥567,692</td><td class="num">3.2%</td><td class="num">11,710</td><td class="num">27.6%</td></tr><tr><td>广东</td><td>东莞市</td><td class="num">¥506,868</td><td class="num">2.8%</td><td class="num">10,234</td><td class="num">12.9%</td></tr><tr><td>浙江</td><td>金华市</td><td class="num">¥457,809</td><td class="num">2.6%</td><td class="num">9,652</td><td class="num">8.9%</td></tr><tr><td>山东</td><td>威海市</td><td class="num">¥342,310</td><td class="num">1.9%</td><td class="num">7,074</td><td class="num">1.8%</td></tr><tr><td>江西</td><td>南昌市</td><td class="num">¥317,434</td><td class="num">1.8%</td><td class="num">5,516</td><td class="num">5.8%</td></tr><tr><td>重庆</td><td>重庆市</td><td class="num">¥300,790</td><td class="num">1.7%</td><td class="num">6,329</td><td class="num">20.6%</td></tr><tr><td>福建</td><td>泉州市</td><td class="num">¥278,480</td><td class="num">1.6%</td><td class="num">6,244</td><td class="num">17.3%</td></tr><tr><td>江苏</td><td>苏州市</td><td class="num">¥244,826</td><td class="num">1.4%</td><td class="num">4,978</td><td class="num">20.3%</td></tr><tr><td>湖北</td><td>武汉市</td><td class="num">¥217,164</td><td class="num">1.2%</td><td class="num">4,403</td><td class="num">29.7%</td></tr><tr><td>福建</td><td>厦门市</td><td class="num">¥206,591</td><td class="num">1.2%</td><td class="num">4,250</td><td class="num">31.0%</td></tr><tr><td>陕西</td><td>西安市</td><td class="num">¥191,952</td><td class="num">1.1%</td><td class="num">3,741</td><td class="num">32.5%</td></tr><tr><td>浙江</td><td>温州市</td><td class="num">¥190,309</td><td class="num">1.1%</td><td class="num">3,934</td><td class="num">19.1%</td></tr><tr><td>湖南</td><td>长沙市</td><td class="num">¥186,380</td><td class="num">1.0%</td><td class="num">4,054</td><td class="num">24.0%</td></tr>
+            <tr><th class="txt-l">省份</th><th class="txt-r">销售占比</th><th class="txt-r">退货率</th><th class="txt-l">TOP城市</th><th class="txt-r">城市销售</th><th class="txt-l">区域分级</th><th class="txt-l">建议动作</th></tr>
+<tr><td>广东</td><td class="num">37.3%</td><td class="num">13.6%</td><td>广州市</td><td class="num">¥2,903,815</td><td><span class="tag" style="background:#38a16920;color:#38a169;">金牛区</span></td><td>保供货、优先补货</td></tr><tr><td>浙江</td><td class="num">12.2%</td><td class="num">19.4%</td><td>杭州市</td><td class="num">¥955,690</td><td><span class="tag" style="background:#38a16920;color:#38a169;">金牛区</span></td><td>保供货、优先补货</td></tr><tr><td>江苏</td><td class="num">5.2%</td><td class="num">25.6%</td><td>苏州市</td><td class="num">¥244,826</td><td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">问题区</span></td><td>重点诊断退货原因</td></tr><tr><td>福建</td><td class="num">4.7%</td><td class="num">22.2%</td><td>泉州市</td><td class="num">¥278,480</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr><tr><td>上海</td><td class="num">4.4%</td><td class="num">21.6%</td><td>上海市</td><td class="num">¥777,157</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr><tr><td>四川</td><td class="num">4.3%</td><td class="num">18.8%</td><td>成都市</td><td class="num">¥568,897</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td><td>加大投放、测试爆款</td></tr><tr><td>山东</td><td class="num">4.2%</td><td class="num">15.1%</td><td>威海市</td><td class="num">¥342,310</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td><td>加大投放、测试爆款</td></tr><tr><td>北京</td><td class="num">3.2%</td><td class="num">27.5%</td><td>北京市</td><td class="num">¥567,692</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr><tr><td>湖南</td><td class="num">2.6%</td><td class="num">18.9%</td><td>长沙市</td><td class="num">¥186,380</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td><td>加大投放、测试爆款</td></tr><tr><td>江西</td><td class="num">2.5%</td><td class="num">12.1%</td><td>南昌市</td><td class="num">¥317,434</td><td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td><td>加大投放、测试爆款</td></tr><tr><td>湖北</td><td class="num">1.9%</td><td class="num">27.6%</td><td>武汉市</td><td class="num">¥217,164</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr><tr><td>河南</td><td class="num">1.7%</td><td class="num">28.3%</td><td>—</td><td class="num">—</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr><tr><td>重庆</td><td class="num">1.7%</td><td class="num">20.6%</td><td>重庆市</td><td class="num">¥300,790</td><td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td><td>减库存、转预售</td></tr>
         </table>
     </div>
 
@@ -423,22 +429,26 @@ c8.setOption({
     series:[{type:'bar',data:[83.7, 82.2, 76.7, 74.1, 84.1, 68.9, 100.0, 100.0],itemStyle:{color:'#38b2ac'}}]
 });
 
-var c9 = echarts.init(document.getElementById('chart_cn_province'));
+var c9 = echarts.init(document.getElementById('chart_region_matrix'));
 c9.setOption({
-    title:{text:'国内省份销售金额TOP20',left:'center'},
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-    xAxis:{type:'value',name:'元'},
-    yAxis:{type:'category',data:["山西", "云南", "陕西", "安徽", "辽宁", "河北", "广西", "重庆", "河南", "湖北", "江西", "湖南", "北京", "山东", "四川", "上海", "福建", "江苏", "浙江", "广东"],axisLabel:{fontSize:11}},
-    series:[{type:'bar',data:[150400.84, 191421.31, 264932.57, 265163.73, 271289.4, 277696.5, 297601.86, 300934.19, 309243.46, 345648.12, 441891.65, 457311.55, 568238.59, 749099.61, 758713.78, 777648.91, 833468.21, 917873.21, 2179502.8, 6642867.87],itemStyle:{color:'#667eea'}}]
-});
-
-var c10 = echarts.init(document.getElementById('chart_cn_city'));
-c10.setOption({
-    title:{text:'国内城市TOP20销售金额',left:'center'},
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-    xAxis:{type:'value',name:'元'},
-    yAxis:{type:'category',data:["湖南-长沙市", "浙江-温州市", "陕西-西安市", "福建-厦门市", "湖北-武汉市", "江苏-苏州市", "福建-泉州市", "重庆-重庆市", "江西-南昌市", "山东-威海市", "浙江-金华市", "广东-东莞市", "北京-北京市", "四川-成都市", "广东-江门市", "上海-上海市", "广东-佛山市", "广东-深圳市", "浙江-杭州市", "广东-广州市"],axisLabel:{fontSize:10}},
-    series:[{type:'bar',data:[186379.53, 190309.07, 191952.21, 206591.37, 217163.7, 244826.48, 278480.0, 300789.79, 317433.56, 342310.08, 457809.07, 506868.02, 567691.59, 568897.13, 718579.53, 777156.91, 820192.13, 835798.68, 955689.56, 2903814.84],itemStyle:{color:'#4299e1'}}]
+    title:{text:'省份效率矩阵（销售占比 vs 退货率）',left:'center'},
+    tooltip:{trigger:'item',formatter:function(p){return p.data.name+'<br/>销售占比: '+p.data.value[0]+'%<br/>退货率: '+p.data.value[1]+'%<br/>分类: '+p.data.quadrant;}},
+    grid:{left:'8%',right:'12%',top:'15%',bottom:'12%'},
+    xAxis:{type:'value',name:'销售占比%',nameLocation:'middle',nameGap:25,splitLine:{lineStyle:{type:'dashed'}}},
+    yAxis:{type:'value',name:'退货率%',nameLocation:'middle',nameGap:35,splitLine:{lineStyle:{type:'dashed'}}},
+    series:[{
+        type:'scatter',
+        symbolSize:function(d){return Math.max(12, Math.min(40, d[0]*3));},
+        data:[{"name": "广东", "value": [37.3, 13.6], "quadrant": "金牛区", "itemStyle": {"color": "#38a169"}}, {"name": "浙江", "value": [12.2, 19.4], "quadrant": "金牛区", "itemStyle": {"color": "#38a169"}}, {"name": "江苏", "value": [5.2, 25.6], "quadrant": "问题区", "itemStyle": {"color": "#dd6b20"}}, {"name": "福建", "value": [4.7, 22.2], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "上海", "value": [4.4, 21.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "四川", "value": [4.3, 18.8], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "山东", "value": [4.2, 15.1], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "北京", "value": [3.2, 27.5], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "湖南", "value": [2.6, 18.9], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "江西", "value": [2.5, 12.1], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "湖北", "value": [1.9, 27.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "河南", "value": [1.7, 28.3], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "重庆", "value": [1.7, 20.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "广西", "value": [1.7, 21.9], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "河北", "value": [1.6, 23.8], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "辽宁", "value": [1.5, 23.0], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "安徽", "value": [1.5, 31.9], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "陕西", "value": [1.5, 31.4], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "云南", "value": [1.1, 20.2], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "山西", "value": [0.8, 22.3], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}],
+        label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:10},
+        markLine:{
+            silent:true,
+            lineStyle:{type:'solid',color:'#999'},
+            data:[
+                {xAxis:5,label:{formatter:'销售占比5%',position:'insideEndTop'}},
+                {yAxis:20,label:{formatter:'退货率20%',position:'insideEndTop'}}]
+        }
+    }]
 });
 
 var c11 = echarts.init(document.getElementById('chart_fw_country'));
@@ -575,7 +585,7 @@ c20.setOption({
 });
 
 window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26].forEach(function(c){c.resize();});
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26].forEach(function(c){c.resize();});
 });
 
 // Enhanced charts
