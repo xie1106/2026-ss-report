@@ -135,111 +135,167 @@ tr:hover td { background:#e8f0ff; }
     </div>
 
     <h3>1.5 区域效率与发货节奏</h3>
-    <div class="chart-box"><div id="chart_region_matrix" class="chart" style="height:480px;"></div></div>
+    <div style="margin-bottom:12px;background:#f0f4ff;border-left:4px solid #667eea;padding:12px 16px;border-radius:0 8px 8px 0;">
+        <p style="color:#2d3748;font-size:13px;line-height:1.8;">
+            <b>分析逻辑：</b>将省份按销售效率（金牛区/潜力区/问题区/低效区）与温度带（热带/亚热带→寒温带）交叉分析，输出各省份的发货节奏建议。温度带决定<b>夏装需求启动时间</b>，效率分级决定<b>备货深度与投放策略</b>。
+        </p>
+    </div>
+    <div class="chart-row">
+        <div class="chart-box"><div id="chart_region_matrix" class="chart" style="height:480px;"></div></div>
+        <div class="chart-box"><div id="chart_temp_curve" class="chart" style="height:480px;"></div></div>
+    </div>
     <div style="display:flex;gap:20px;margin:10px 0;flex-wrap:wrap;font-size:12px;color:#4a5568;">
-        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#38a169;display:inline-block;"></span>金牛区（高销售+低退货）→ 保供货</div>
-        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4299e1;display:inline-block;"></span>潜力区（低销售+低退货）→ 加大投放</div>
-        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#e53e3e;display:inline-block;"></span>低效区（低销售+高退货）→ 转预售</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#38a169;display:inline-block;"></span>金牛区（高销售+低退货）</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#4299e1;display:inline-block;"></span>潜力区（低销售+低退货）</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#dd6b20;display:inline-block;"></span>问题区（高销售+高退货）</div>
+        <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:50%;background:#e53e3e;display:inline-block;"></span>低效区（低销售+高退货）</div>
     </div>
 
     <div class="table-wrap">
         <table>
             <tr>
                 <th class="txt-l">省份</th>
+                <th class="txt-l">温度带</th>
+                <th class="txt-r">入夏月份</th>
                 <th class="txt-r">销售占比</th>
                 <th class="txt-r">退货率</th>
                 <th class="txt-l">效率分级</th>
                 <th class="txt-r">销售件数</th>
+                <th class="txt-l">发货节奏建议</th>
             </tr>
 <tr>
             <td>广东</td>
+            <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;font-size:11px;">热带/亚热带</span></td>
+            <td class="num">4月</td>
             <td class="num">37.3%</td>
             <td class="num">13.6%</td>
             <td><span class="tag" style="background:#38a16920;color:#38a169;">金牛区</span></td>
             <td class="num">136,674</td>
+            <td style="font-size:12px;color:#4a5568;">2月中旬满仓铺货，保证深度</td>
         </tr><tr>
             <td>浙江</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">12.2%</td>
             <td class="num">19.4%</td>
             <td><span class="tag" style="background:#38a16920;color:#38a169;">金牛区</span></td>
             <td class="num">44,249</td>
+            <td style="font-size:12px;color:#4a5568;">2月中旬满仓铺货，保证深度</td>
         </tr><tr>
             <td>江苏</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">5.2%</td>
             <td class="num">25.6%</td>
             <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;">问题区</span></td>
             <td class="num">17,889</td>
+            <td style="font-size:12px;color:#4a5568;">3月长袖T+外套为主，4月后转夏装</td>
         </tr><tr>
             <td>福建</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">4.7%</td>
             <td class="num">22.2%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">17,601</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr><tr>
             <td>上海</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">4.4%</td>
             <td class="num">21.6%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">15,731</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr><tr>
             <td>四川</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">4.3%</td>
             <td class="num">18.8%</td>
             <td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td>
             <td class="num">15,178</td>
+            <td style="font-size:12px;color:#4a5568;">3月中旬试销，动销>40%追单</td>
         </tr><tr>
             <td>山东</td>
+            <td><span class="tag" style="background:#4299e120;color:#4299e1;font-size:11px;">温带</span></td>
+            <td class="num">5月</td>
             <td class="num">4.2%</td>
             <td class="num">15.1%</td>
             <td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td>
             <td class="num">15,747</td>
+            <td style="font-size:12px;color:#4a5568;">4月中旬小批量试销</td>
         </tr><tr>
             <td>北京</td>
+            <td><span class="tag" style="background:#4299e120;color:#4299e1;font-size:11px;">温带</span></td>
+            <td class="num">5月</td>
             <td class="num">3.2%</td>
             <td class="num">27.5%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">11,725</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr><tr>
             <td>湖南</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">2.6%</td>
             <td class="num">18.9%</td>
             <td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td>
             <td class="num">9,851</td>
+            <td style="font-size:12px;color:#4a5568;">3月中旬试销，动销>40%追单</td>
         </tr><tr>
             <td>江西</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">2.5%</td>
             <td class="num">12.1%</td>
             <td><span class="tag" style="background:#4299e120;color:#4299e1;">潜力区</span></td>
             <td class="num">8,070</td>
+            <td style="font-size:12px;color:#4a5568;">3月中旬试销，动销>40%追单</td>
         </tr><tr>
             <td>湖北</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">1.9%</td>
             <td class="num">27.6%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">7,078</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr><tr>
             <td>河南</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">1.7%</td>
             <td class="num">28.3%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">6,327</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr><tr>
             <td>重庆</td>
+            <td><span class="tag" style="background:#dd6b2020;color:#dd6b20;font-size:11px;">温暖带</span></td>
+            <td class="num">5月</td>
             <td class="num">1.7%</td>
             <td class="num">20.6%</td>
             <td><span class="tag" style="background:#e53e3e20;color:#e53e3e;">低效区</span></td>
             <td class="num">6,333</td>
+            <td style="font-size:12px;color:#4a5568;">4月后预售+集中发货，减少库存风险</td>
         </tr>
         </table>
     </div>
 
     <div class="insight-box" style="margin:12px 0;">
-        <h4>温度与销量分析</h4>
+        <h4>温度带×效率分级 — 发货节奏决策矩阵</h4>
         <ul>
-            <li><b>温度对发货节奏的直接影响：</b>广东、广西、海南（热带/亚热带，3月即入夏）销售占比合计超40%，3月即进入夏装销售高峰，需在2月中旬完成短袖T/短裤的铺货。北方省份（北京、山东、河北等，5月才入夏）外套需求延续到4月，夏装窗口短，备货需延迟至4月中旬。</li>
-            <li><b>温度带与销售集中度的关联：</b>TOP5销售省份（广东、浙江、江苏、福建、上海）均为温暖带及以上，1-6月均温>12°C，夏装需求启动早、持续时间长。这些省份贡献了国内近65%的销售，按温度带提前备货可有效降低缺货风险。</li>
-            <li><b>退货率与温度的间接关系：</b>高退货率省份（安徽31.9%、陕西31.4%、河南28.3%）均为温暖带，温度波动大（3-5月昼夜温差>10°C），消费者提前购买夏装后发现穿不上→退货。建议这些省份4月后再加大短袖铺货，3月以长袖T+外套为主。</li>
+            <li><b>热带/亚热带（3月入夏）：</b>金牛区（广东）：2月中旬满仓铺货，保证深度不断货；低效区（广西）：3月后预售+集中发货，降低库存风险</li>
+<li><b>温暖带（5月入夏）：</b>金牛区（浙江）：4月中旬满仓铺货，保证深度不断货；潜力区（四川、湖南、江西）：5月中旬小批量试销，动销>40%追单；问题区（江苏）：退货率>25%，5月后铺夏装，前期以长袖T+外套为主；低效区（福建、上海、湖北）：5月后预售+集中发货，降低库存风险</li>
+<li><b>温带（5月入夏）：</b>潜力区（山东）：5月中旬小批量试销，动销>40%追单；低效区（北京、河北、山西）：5月后预售+集中发货，降低库存风险</li>
+<li><b>寒温带（6月入夏）：</b>低效区（辽宁）：6月后预售+集中发货，降低库存风险</li>
         </ul>
+        <p style="margin-top:12px;font-size:12px;color:#718096;">
+            <b>核心原则：</b>温度带决定「何时铺货」，效率分级决定「铺多少」。热带/亚热带省份2月即可启动夏装，比寒温带早12-16周；
+            金牛区省份保证深度供应，低效区省份以预售+集中发货降低库存风险。
+        </p>
     </div>
 
     <h3>1.6 国外国家销售分布</h3>
@@ -535,6 +591,18 @@ c9.setOption({
     }]
 });
 
+var c10 = echarts.init(document.getElementById('chart_temp_curve'));
+c10.setOption({
+    title:{text:'四大温度带1-6月均温走势',left:'center'},
+    tooltip:{trigger:'axis',formatter:function(ps){var s=ps[0].axisValue+'<br/>';ps.forEach(function(p){s+=p.marker+p.seriesName+': '+p.value+'°C<br/>';});return s;}},
+    legend:{data:["热带/亚热带(5省)", "温暖带(15省)", "温带(8省)", "寒温带(6省)"],bottom:0},
+    grid:{left:'8%',right:'5%',top:'15%',bottom:'18%'},
+    xAxis:{type:'category',data:['1月','2月','3月','4月','5月','6月']},
+    yAxis:{type:'value',name:'°C',min:-20},
+    series:[{"name": "热带/亚热带(5省)", "type": "line", "smooth": true, "data": [15.5, 17.2, 20.1, 24.2, 27.4, 29.0], "lineStyle": {"color": "#e53e3e", "width": 3}, "itemStyle": {"color": "#e53e3e"}, "symbol": "circle", "symbolSize": 6, "areaStyle": {"color": "#e53e3e20"}}, {"name": "温暖带(15省)", "type": "line", "smooth": true, "data": [6.5, 8.9, 12.9, 18.3, 22.9, 26.1], "lineStyle": {"color": "#dd6b20", "width": 3}, "itemStyle": {"color": "#dd6b20"}, "symbol": "circle", "symbolSize": 6, "areaStyle": {"color": "#dd6b2020"}}, {"name": "温带(8省)", "type": "line", "smooth": true, "data": [-2.1, 1.7, 7.9, 14.6, 20.2, 24.3], "lineStyle": {"color": "#4299e1", "width": 3}, "itemStyle": {"color": "#4299e1"}, "symbol": "circle", "symbolSize": 6, "areaStyle": {"color": "#4299e120"}}, {"name": "寒温带(6省)", "type": "line", "smooth": true, "data": [-11.3, -6.5, 1.5, 10.6, 16.9, 21.6], "lineStyle": {"color": "#667eea", "width": 3}, "itemStyle": {"color": "#667eea"}, "symbol": "circle", "symbolSize": 6, "areaStyle": {"color": "#667eea20"}}],
+    markLine:{silent:true,symbol:'none',data:[{yAxis:22,lineStyle:{type:'dashed',color:'#e53e3e',width:2},label:{formatter:'入夏线 22°C',position:'end',fontSize:11}}]}
+});
+
 var c11 = echarts.init(document.getElementById('chart_fw_country'));
 c11.setOption({
     title:{text:'国外国家销售金额TOP15',left:'center'},
@@ -669,7 +737,7 @@ c20.setOption({
 });
 
 window.addEventListener('resize',function(){
-    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
+    [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27].forEach(function(c){c.resize();});
 });
 
 // Enhanced charts
