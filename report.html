@@ -770,29 +770,36 @@ c10.setOption({
 // 1.5 Region Matrix Scatter
 var c11 = echarts.init(document.getElementById('chart_region_matrix'));
 c11.setOption({
-    title:{text:'区域效率四象限矩阵',left:'center'},
+    title:{text:'区域效率四象限矩阵',left:'center',subtext:'横轴=销售占比  纵轴=退货率  分界线：占比5% / 退货率15%·20%'},
     tooltip:{trigger:'item',formatter:function(p){
         return p.data.name+'<br>销售占比: '+p.data.value[0]+'%<br>退货率: '+p.data.value[1]+'%<br>分级: '+p.data.quadrant;
     }},
+    legend:{data:['金牛区','观察区','潜力区','问题区','低效区'],bottom:0,textStyle:{fontSize:11}},
+    grid:{left:'8%',right:'5%',top:'18%',bottom:'18%'},
     xAxis:{type:'value',name:'销售占比%',min:0,max:25,axisLine:{lineStyle:{color:'#667eea'}},splitLine:{lineStyle:{type:'dashed'}}},
     yAxis:{type:'value',name:'退货率%',min:0,max:35,axisLine:{lineStyle:{color:'#667eea'}},splitLine:{lineStyle:{type:'dashed'}}},
-    series:[{
-        type:'scatter',
-        symbolSize:14,
-        data:[{"name": "广东", "value": [37.3, 13.6], "quadrant": "金牛区", "itemStyle": {"color": "#38a169"}}, {"name": "浙江", "value": [12.2, 19.4], "quadrant": "观察区", "itemStyle": {"color": "#68d391"}}, {"name": "江苏", "value": [5.2, 25.6], "quadrant": "问题区", "itemStyle": {"color": "#dd6b20"}}, {"name": "福建", "value": [4.7, 22.2], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "上海", "value": [4.4, 21.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "四川", "value": [4.3, 18.8], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "山东", "value": [4.2, 15.1], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "北京", "value": [3.2, 27.5], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "湖南", "value": [2.6, 18.9], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "江西", "value": [2.5, 12.1], "quadrant": "潜力区", "itemStyle": {"color": "#4299e1"}}, {"name": "湖北", "value": [1.9, 27.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "河南", "value": [1.7, 28.3], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "重庆", "value": [1.7, 20.6], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "广西", "value": [1.7, 21.9], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "河北", "value": [1.6, 23.8], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "辽宁", "value": [1.5, 23.0], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "安徽", "value": [1.5, 31.9], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "陕西", "value": [1.5, 31.4], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "云南", "value": [1.1, 20.2], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}, {"name": "山西", "value": [0.8, 22.3], "quadrant": "低效区", "itemStyle": {"color": "#e53e3e"}}],
-        label:{show:true,formatter:'{b}',position:'top',fontSize:10}
-    }],
-    graphic:[
-        {type:'rect',left:'55%',top:'15%',shape:{width:120,height:30},style:{fill:'#38a16920',stroke:'#38a169'}},
-        {type:'text',left:'57%',top:'17%',style:{text:'金牛区',fill:'#38a169',fontSize:12,fontWeight:'bold'}},
-        {type:'rect',left:'55%',top:'35%',shape:{width:120,height:30},style:{fill:'#68d39120',stroke:'#68d391'}},
-        {type:'text',left:'57%',top:'37%',style:{text:'观察区',fill:'#68d391',fontSize:12,fontWeight:'bold'}},
-        {type:'rect',left:'15%',top:'15%',shape:{width:120,height:30},style:{fill:'#4299e120',stroke:'#4299e1'}},
-        {type:'text',left:'17%',top:'17%',style:{text:'潜力区',fill:'#4299e1',fontSize:12,fontWeight:'bold'}},
-        {type:'rect',left:'55%',top:'55%',shape:{width:120,height:30},style:{fill:'#dd6b2020',stroke:'#dd6b20'}},
-        {type:'text',left:'57%',top:'57%',style:{text:'问题区',fill:'#dd6b20',fontSize:12,fontWeight:'bold'}},
-        {type:'rect',left:'15%',top:'55%',shape:{width:120,height:30},style:{fill:'#e53e3e20',stroke:'#e53e3e'}},
-        {type:'text',left:'17%',top:'57%',style:{text:'低效区',fill:'#e53e3e',fontSize:12,fontWeight:'bold'}}
+    series:[
+        {name:'金牛区',type:'scatter',symbolSize:14,data:{prov_gold_j},itemStyle:{color:'#38a169'},label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:9}},
+        {name:'观察区',type:'scatter',symbolSize:14,data:{prov_observe_j},itemStyle:{color:'#68d391'},label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:9}},
+        {name:'潜力区',type:'scatter',symbolSize:14,data:{prov_potential_j},itemStyle:{color:'#4299e1'},label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:9}},
+        {name:'问题区',type:'scatter',symbolSize:14,data:{prov_problem_j},itemStyle:{color:'#dd6b20'},label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:9}},
+        {name:'低效区',type:'scatter',symbolSize:14,data:{prov_ineff_j},itemStyle:{color:'#e53e3e'},label:{show:true,formatter:function(p){return p.data.name;},position:'top',fontSize:9}},
+        {
+            type:'scatter',
+            data:[],
+            markLine:{silent:true,symbol:'none',lineStyle:{type:'dashed',color:'#999',width:1.5},data:[
+                {xAxis:5},
+                {yAxis:15},
+                {yAxis:20}
+            ]},
+            markArea:{silent:true,itemStyle:{opacity:0.12},label:{show:true,fontWeight:'bold',fontSize:11},data:[
+                [{xAxis:5,yAxis:0},{xAxis:25,yAxis:15},{itemStyle:{color:'#38a169'},label:{content:'金牛区',color:'#38a169',position:'insideBottomRight'}}],
+                [{xAxis:5,yAxis:15},{xAxis:25,yAxis:20},{itemStyle:{color:'#68d391'},label:{content:'观察区',color:'#2f855a',position:'insideBottomRight'}}],
+                [{xAxis:5,yAxis:20},{xAxis:25,yAxis:35},{itemStyle:{color:'#dd6b20'},label:{content:'问题区',color:'#dd6b20',position:'insideTopRight'}}],
+                [{xAxis:0,yAxis:0},{xAxis:5,yAxis:20},{itemStyle:{color:'#4299e1'},label:{content:'潜力区',color:'#4299e1',position:'insideBottomRight'}}],
+                [{xAxis:0,yAxis:20},{xAxis:5,yAxis:35},{itemStyle:{color:'#e53e3e'},label:{content:'低效区',color:'#e53e3e',position:'insideTopRight'}}]
+            ]}
+        }
     ]
 });
 
