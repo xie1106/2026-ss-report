@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>云仓 · 2026年上半年人效看板</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f5f5f3;font-family:-apple-system,"PingFang SC",sans-serif;padding:24px;max-width:900px;margin:0 auto;color:#333}
+.hdr{text-align:center;margin-bottom:24px}
+.hdr h1{font-size:20px;color:#1a1a2e}.hdr h1 span{color:#2832c2}
+.hdr p{color:#888;font-size:12px;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.kpi{background:#fff;border-radius:8px;padding:14px;border:1px solid #e8e8e8;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.kpi .lb{font-size:10px;color:#888;margin-bottom:4px}
+.kpi .vl{font-size:20px;font-weight:700;color:#2832c2}
+.kpi .nt{font-size:10px;color:#666;margin-top:3px}
+.card{background:#fff;border-radius:8px;padding:16px;border:1px solid #e8e8e8;margin-bottom:16px;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.card h3{font-size:14px;color:#2832c2;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f8f8f6;padding:7px;text-align:center;font-weight:600;color:#555;border-bottom:1px solid #e8e8e8}
+td{padding:6px;text-align:center;border-bottom:1px solid #f0f0f0}
+.chart{width:100%;height:260px}
+.footer{text-align:center;color:#aaa;font-size:10px;margin-top:24px}
+</style></head><body>
+<div class="hdr">
+<h1>云仓 · <span>2026年上半年人效看板</span></h1>
+<p>QUICKSHOW · 1-6月汇总</p>
+</div>
+
+<div class="kpis">
+<div class="kpi"><div class="lb">H1收入</div><div class="vl">4399.5<small>万</small></div><div class="nt">去年5623.9万 | <span style="color:#f5222d">↓21.8%</span></div></div>
+<div class="kpi"><div class="lb">平均人数</div><div class="vl">15.5<small>人</small></div><div class="nt">去年15.6人 | <span style="color:#f5222d">↓0.6%</span></div></div>
+<div class="kpi"><div class="lb">月均人效</div><div class="vl">56.82<small>万/人</small></div><div class="nt">去年60.21万 | <span style="color:#f5222d">↓5.6%</span></div></div>
+<div class="kpi"><div class="lb">人力成本</div><div class="vl">74.9<small>万</small></div><div class="nt">去年89.1万 | <span style="color:#f5222d">↓15.8%</span></div></div>
+<div class="kpi"><div class="lb">人力/收入</div><div class="vl" style="color:#52c41a">1.7%</div><div class="nt">去年1.6%</div></div>
+</div>
+
+<div class="card">
+<h3>月度明细</h3>
+<table>
+<tr><th>月份</th><th>收入(万)</th><th>去年</th><th>同比</th><th>人数</th><th>人效(万/人)</th><th>去年人效</th><th>人效同比</th><th>成本(万)</th></tr><tr><td>1月</td><td>554.1</td><td>809.4</td><td><span style="color:#f5222d">↓31.6%</span></td><td>16.0</td><td>34.63</td><td>44.01</td><td><span style="color:#f5222d">↓21.3%</span></td><td>13.1</td></tr><tr><td>2月</td><td>703.6</td><td>1237.8</td><td><span style="color:#f5222d">↓43.2%</span></td><td>16.0</td><td>43.98</td><td>63.85</td><td><span style="color:#f5222d">↓31.1%</span></td><td>15.5</td></tr><tr><td>3月</td><td>872.8</td><td>1066.3</td><td><span style="color:#f5222d">↓18.2%</span></td><td>15.4</td><td>56.55</td><td>57.54</td><td><span style="color:#f5222d">↓1.7%</span></td><td>15.9</td></tr><tr><td>4月</td><td>1173.1</td><td>1321.5</td><td><span style="color:#f5222d">↓11.2%</span></td><td>15.0</td><td>78.21</td><td>68.85</td><td><span style="color:#52c41a">↑13.6%</span></td><td>15.3</td></tr><tr><td>5月</td><td>1096.0</td><td>1188.8</td><td><span style="color:#f5222d">↓7.8%</span></td><td>15.0</td><td>73.07</td><td>66.41</td><td><span style="color:#52c41a">↑10.0%</span></td><td>15.0</td></tr><tr style="font-weight:700;border-top:2px solid #2832c2"><td>合计</td><td>4399.5</td><td>5623.9</td><td><span style="color:#f5222d">↓21.8%</span></td><td>15.5(均)</td><td>56.82</td><td>60.21</td><td><span style="color:#f5222d">↓5.6%</span></td><td>74.9</td></tr>
+</table></div>
+
+<div class="card">
+<h3>收入趋势（2026 vs 2025）</h3>
+<div id="chart1" class="chart"></div>
+</div>
+
+<div class="card">
+<h3>人效趋势</h3>
+<div id="chart2" class="chart"></div>
+</div>
+
+<div class="footer">QUICKSHOW · 云仓 · 2026 H1 人效数据</div>
+
+<script>
+var c1=echarts.init(document.getElementById('chart1'));
+c1.setOption({tooltip:{trigger:'axis'},legend:{data:['2026','2025']},xAxis:{type:'category',data:['1月', '2月', '3月', '4月', '5月', '6月']},yAxis:{type:'value',name:'万'},series:[
+{name:'2026',type:'bar',data:[554.1, 703.6, 872.8, 1173.1, 1096.0],itemStyle:{color:'#2832c2'}},
+{name:'2025',type:'line',data:[809.4, 1237.8, 1066.3, 1321.5, 1188.8],itemStyle:{color:'#faad14'},lineStyle:{type:'dashed'}}
+]});
+var c2=echarts.init(document.getElementById('chart2'));
+c2.setOption({tooltip:{trigger:'axis'},xAxis:{type:'category',data:['1月', '2月', '3月', '4月', '5月', '6月']},yAxis:{type:'value',name:'万/人'},series:[
+{name:'月人效',type:'line',data:[34.63, 43.98, 56.55, 78.21, 73.07],smooth:true,itemStyle:{color:'#2832c2'},areaStyle:{color:'rgba(40,50,194,0.08)'}}
+]});
+window.addEventListener('resize',function(){c1.resize();c2.resize()});
+</script></body></html>
